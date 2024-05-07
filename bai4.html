@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .wrapper {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto 0;
+            padding: 12px;
+        }
+
+        .input-wrap {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .inner {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-content {
+            flex: 1;
+            padding: 6px 8px;
+            outline: none;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .output-wrap {
+            width: 200px;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        #result {
+            flex: 1;
+            display: block;
+            border: 1px solid #ccc;
+            padding: 7px;
+            border-radius: 8px;
+        }
+
+        .action-wrap {
+            width: 500px;
+            margin: 0 auto;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .action-btn {
+            border: 1px solid #ccc;
+            padding: 7px;
+            cursor: pointer;
+            width: 50px;
+            text-align: center;
+            border-radius: 12px;
+            user-select: none;
+        }
+    </style>
+    <div class="wrapper">
+        <div class="input-wrap">
+            <div class="inner">
+                <label for="numberA">Input a</label>
+                <input type="text" placeholder="Enter your number" id="numberA" class="input-content">
+            </div>
+            <div class="inner">
+                <label for="numberB">Input b</label>
+                <input type="text" placeholder="Enter your number" id="numberB" class="input-content">
+            </div>
+        </div>
+        <div class="output-wrap">
+            <span class="result-title">Result</span>
+            <span id="result"></span>
+        </div>
+        <div class="action-wrap">
+            <span class="action-btn" id="add">+</span>
+            <span class="action-btn" id="sub">-</span>
+            <span class="action-btn" id="multi">x</span>
+            <span class="action-btn" id="div">%</span>
+            <span class="action-btn" id="pow">a^b</span>
+            <span class="action-btn" id="square">√</span>
+        </div>
+    </div>
+    <script src="bai4.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .wrapper {
+        width: 500px;
+        margin: auto;
+        margin-top: 50px;
+        display: flex;
+        gap: 20px;
+    }
+
+    #input {
+        flex: 1;
+        font-style: 18px;
+        line-height: 2;
+        padding: 5px 7px;
+        border-radius: 12px;
+        border: 2px solid #2cccff;
+        outline: none;
+    }
+
+    #btn {
+        border-radius: 12px;
+        width: 120px;
+        border: 0;
+        background-color: #2cccff;
+        color: white;
+        font-size: 18px;
+        line-height: 2;
+        cursor: pointer;
+    }
+
+    .list {
+        width: 100%;
+        max-width: 500px;
+        margin: 50px auto 0;
+        list-style: none;
+        padding: 12px;
+    }
+
+    .item {
+        margin-bottom: 8px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+</style>
+
+<body>
+    <div class="wrapper">
+        <input type="text" placeholder="Find..." id="input">
+        <button type="button" id="btn">Submit</button>
+    </div>
+    <ul class="list"></ul>
+    <script src="bai3.js"></script>
+</body>
+
+</html>
