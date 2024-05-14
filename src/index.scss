@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-main text-base;
+    }
+
+    input {
+        outline: none;
+    }
+
+    // Header
+    header.sticky-top {
+        position: fixed !important;
+        z-index: 9999;
+        width: 100%;
+        filter: opacity(0.9);
+        animation: stickyHeader 0.5s linear;
+        box-shadow: 0 10px 15px -3px #ff8a6c80, 0 4px 6px -4px #ff8a6c80;
+    }
+
+    @keyframes stickyHeader {
+        0% {
+            transform: translateY(-100%);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .swiper-pagination {
+        bottom: 10%;
+    }
+
+    .item-blog:hover .box-blog-hid {
+        height: 84px;
+    }
+
+    .box-blog-hid {
+        transition: all 0.5s;
+    }
+
+    .line-clamp-3 {
+        word-break: break-word;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+    }
+
+    // Footer
+    .social-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    #facebook {
+        background-color: #1877f2;
+    }
+
+    #instagram {
+        background: linear-gradient(
+            29.61deg,
+            #f38334 0%,
+            #da2e7d 50.39%,
+            #6b54c6 100%
+        );
+    }
+
+    #tiktok {
+        background-color: #000;
+    }
+
+    #twitter {
+        background-color: #55acee;
+    }
+}
