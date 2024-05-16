@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom';
 import Logo from './assets/images/Logo.png';
-import Slide from './assets/images/slider_1.webp';
-import FoodBlog from './assets/images/new/food_new.webp';
 import {
     FacebookIcon,
     IconCart,
     IconCategory,
-    IconHeart,
     IconHome,
     IconMail,
     IconMoon,
     IconSearch,
+    IconHeart,
     IconShare,
     IconUser,
     InstagramIcon,
@@ -18,21 +16,22 @@ import {
     TwitterIcon,
 } from './components/icons';
 import CardItem from './components/card/CardItem';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import useScroll from './hooks/useScroll';
+import classNames from './utils/classNames';
+import Slider from './components/slide/Slider';
+import NewItem from './components/new/NewItem';
+import data from '../data.json';
 
 function App() {
     const { active } = useScroll();
+    const { category, products, news } = data;
     return (
         <>
             <header
-                className={`relative flex flex-col justify-center p-4 bg-white ${
-                    active ? 'sticky-top' : ''
-                }`}
+                className={classNames(
+                    'relative flex flex-col justify-center p-4 bg-white',
+                    active ? 'sticky-top' : '',
+                )}
             >
                 <div className="flex items-center justify-between">
                     <Link to="/" className="">
@@ -101,35 +100,7 @@ function App() {
                 </div>
             </header>
             <main>
-                {/* Banner */}
-                <Swiper
-                    slidesPerView={1}
-                    spaceBetween={30}
-                    autoplay={{
-                        delay: 3000,
-                        disableOnInteraction: false,
-                    }}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    navigation={true}
-                    modules={[Autoplay, Pagination, Navigation]}
-                >
-                    <SwiperSlide>
-                        <img
-                            src={Slide}
-                            alt=""
-                            className="object-cover w-full h-[450px]"
-                        />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img
-                            src={Slide}
-                            alt=""
-                            className="object-cover w-full h-[450px]"
-                        />
-                    </SwiperSlide>
-                </Swiper>
+                <Slider />
                 <div className="w-full max-w-[1200px] mx-auto my-10">
                     {/* Sale product */}
                     <section className="mb-10">
@@ -137,10 +108,17 @@ function App() {
                             <Link to="#">Đồ uống khuyến mãi</Link>
                         </h2>
                         <div className="grid grid-cols-4 gap-x-4">
-                            <CardItem />
-                            <CardItem />
-                            <CardItem />
-                            <CardItem />
+                            {products
+                                .filter((item, index) => index < 4)
+                                .map((item, index) => (
+                                    <CardItem
+                                        key={index}
+                                        url={item.url}
+                                        title={item.title}
+                                        price={item.price}
+                                        salePrice={item.salePrice}
+                                    />
+                                ))}
                         </div>
                     </section>
                     {/* Main product */}
@@ -150,26 +128,30 @@ function App() {
                         </h2>
                         <nav className="py-4 border-y border-y-graySoft my-9">
                             <ul className="flex items-center justify-center uppercase gap-x-12">
-                                <li className="cursor-pointer hover:text-primary">
-                                    Trà truyền thống
-                                </li>
-                                <li className="cursor-pointer hover:text-primary">
-                                    Trà sữa trái cây
-                                </li>
-                                <li className="cursor-pointer hover:text-primary">
-                                    Nước trái cây
-                                </li>
-                                <li className="cursor-pointer hover:text-primary">
-                                    Đồ uống nóng
-                                </li>
+                                {category
+                                    .filter((item, index) => index < 6)
+                                    .map((item) => (
+                                        <li
+                                            className="cursor-pointer hover:text-primary"
+                                            key={item.id}
+                                        >
+                                            {item.title}
+                                        </li>
+                                    ))}
                             </ul>
                         </nav>
                         <div className="grid grid-cols-4 gap-[20px_16px]">
-                            <CardItem />
-                            <CardItem />
-                            <CardItem />
-                            <CardItem />
-                            <CardItem />
+                            {products
+                                .filter((item, index) => index < 8)
+                                .map((item, index) => (
+                                    <CardItem
+                                        key={index}
+                                        url={item.url}
+                                        title={item.title}
+                                        price={item.price}
+                                        salePrice={item.salePrice}
+                                    />
+                                ))}
                         </div>
                         <div className="text-center">
                             <a
@@ -187,46 +169,20 @@ function App() {
                                 Tin tức
                             </a>
                         </h2>
-                        <div className="grid grid-cols-3 mb-10">
+                        <div className="grid grid-cols-3 mb-10 gap-x-5">
                             {/* Blog item */}
-                            <div className="relative mb-8 transition-[all_.4s_ease] item-blog">
-                                {/* Thumb */}
-                                <div className="overflow-hidden rounded-lg">
-                                    <a href="#">
-                                        <img
-                                            src={FoodBlog}
-                                            alt=""
-                                            className="object-cover w-full h-full"
-                                        />
-                                    </a>
-                                </div>
-                                {/* Content */}
-                                <div className="absolute p-[10px] bg-secondary text-white w-[calc(100%-30px)] left-0 bottom-[-25px] rounded-[0px_20px_0px_20px]">
-                                    <h3 className="mb-2">
-                                        <a
-                                            href="#"
-                                            className="block font-semibold h-11"
-                                        >
-                                            Những món ăn vặt cứu đói trong giờ
-                                            làm dành cho dân công sở
-                                        </a>
-                                    </h3>
-                                    {/* Author & Dates */}
-                                    <p className="flex items-center justify-between text-sm">
-                                        <span>Kent</span>
-                                        <span>12/05/2024</span>
-                                    </p>
-                                    <div className="block h-0 overflow-hidden box-blog-hid">
-                                        <p className="mb-[5px] font-normal text-white transition-[all_1s_ease] overflow-hidden h-[66px] line-clamp-3">
-                                            Dân văn phòng đều biết đến khung giờ
-                                            ĐINH - tức tầm 3 giờ chiều, lúc này
-                                            dù bữa trưa no đến cỡ nào thì bụng
-                                            vẫn réo, có khi...
-                                        </p>
-                                        <span className="relative bg-white mt-[5px] w-1/3 h-1 inline-block"></span>
-                                    </div>
-                                </div>
-                            </div>
+                            {news
+                                .filter((item, index) => index < 3)
+                                .map((item, index) => (
+                                    <NewItem
+                                        key={index}
+                                        url={item.url}
+                                        title={item.title}
+                                        author={item.author}
+                                        date={item.date}
+                                        desc={item.desc}
+                                    />
+                                ))}
                         </div>
                         <div className="text-center">
                             <a

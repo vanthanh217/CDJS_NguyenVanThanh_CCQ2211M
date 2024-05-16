@@ -5,6 +5,17 @@
 @layer base {
     body {
         @apply font-main text-base;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        &::-webkit-scrollbar-track {
+            @apply bg-gray-300;
+        }
+        &::-webkit-scrollbar-thumb {
+            @apply bg-primary;
+        }
     }
 
     input {
