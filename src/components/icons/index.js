@@ -7,6 +7,7 @@ export { default as IconCategory } from './IconCategory';
 export { default as IconUser } from './IconUser';
 export { default as IconSearch } from './IconSearch';
 export { default as IconMoon } from './IconMoon';
+export { default as IconArrow } from './IconArrow';
 
 // Social icon
 export { default as FacebookIcon } from './FacebookIcon';

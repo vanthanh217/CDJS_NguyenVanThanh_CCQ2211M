@@ -1,0 +1,15 @@
+.wrap {
+    &:hover .action {
+        bottom: 0;
+    }
+
+    &:hover .priceBox {
+        opacity: 0.4;
+    }
+
+    .action {
+        bottom: -70px;
+        transition: all 0.5s ease;
+        width: 100%;
+    }
+}

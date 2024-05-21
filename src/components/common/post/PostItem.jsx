@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
+import styles from './Post.module.scss';
+import classNames from '../../../utils/classNames';
 
-const NewItem = (props) => {
+const PostItem = (props) => {
     const { url = '', author = '', date = '', title = '', desc = '' } = props;
     return (
-        <div className="relative mb-8 transition-[all_.4s_ease] item-blog">
+        <div className={classNames('relative mb-8 item-blog', styles.postItem)}>
             {/* Thumb */}
             <div className="overflow-hidden rounded-lg">
                 <a href="#">
@@ -26,7 +28,12 @@ const NewItem = (props) => {
                     <span>{author}</span>
                     <span>{date}</span>
                 </p>
-                <div className="block h-0 overflow-hidden box-blog-hid">
+                <div
+                    className={classNames(
+                        'block h-0 overflow-hidden',
+                        styles.boxContentHid,
+                    )}
+                >
                     <p className="mb-[5px] font-normal text-white transition-[all_1s_ease] overflow-hidden h-[66px] line-clamp-3">
                         {desc}
                     </p>
@@ -37,7 +44,7 @@ const NewItem = (props) => {
     );
 };
 
-NewItem.propTypes = {
+PostItem.propTypes = {
     url: PropTypes.string,
     author: PropTypes.string,
     date: PropTypes.string,
@@ -45,4 +52,4 @@ NewItem.propTypes = {
     desc: PropTypes.string,
 };
 
-export default NewItem;
+export default PostItem;

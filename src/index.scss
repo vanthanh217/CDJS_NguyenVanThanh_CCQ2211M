@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply font-main text-base;
+        @apply font-main text-base bg-slate-50 text-textPrimary;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         &::-webkit-scrollbar {
@@ -18,13 +18,18 @@
         }
     }
 
-    input {
+    input,
+    textarea {
         outline: none;
+    }
+
+    textarea {
+        resize: none;
     }
 
     // Header
     header.sticky-top {
-        position: fixed !important;
+        position: fixed;
         z-index: 9999;
         width: 100%;
         filter: opacity(0.9);
@@ -39,26 +44,6 @@
         100% {
             transform: translateY(0);
         }
-    }
-
-    .swiper-pagination {
-        bottom: 10%;
-    }
-
-    .item-blog:hover .box-blog-hid {
-        height: 84px;
-    }
-
-    .box-blog-hid {
-        transition: all 0.5s;
-    }
-
-    .line-clamp-3 {
-        word-break: break-word;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        text-overflow: ellipsis;
     }
 
     // Footer

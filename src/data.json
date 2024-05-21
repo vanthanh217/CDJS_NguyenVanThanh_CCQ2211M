@@ -1,0 +1,141 @@
+{
+    "brand": [
+        {
+            "id": 0,
+            "title": "The Coffee House",
+            "url": "/thuong-hieu/the-coffee-house"
+        },
+        {
+            "id": 1,
+            "title": "BoBa Pop",
+            "url": "/thuong-hieu/boba-pop"
+        }
+    ],
+    "category": [
+        {
+            "id": 0,
+            "title": "Sinh tố",
+            "url": "/danh-muc/sinh-to"
+        },
+        {
+            "id": 1,
+            "title": "Trà trái cây",
+            "url": "/danh-muc/tra-trai-cay"
+        },
+        {
+            "id": 2,
+            "title": "Cà phê",
+            "url": "/danh-muc/ca-phe"
+        },
+        {
+            "id": 3,
+            "title": "Bánh mochi",
+            "url": "/danh-muc/mochi"
+        },
+        {
+            "id": 4,
+            "title": "Đồ uống nóng",
+            "url": "/danh-muc/do-uong-nong"
+        }
+    ],
+    "news": [
+        {
+            "url": "https://bizweb.dktcdn.net/100/270/285/articles/gcs-thumb-w-597c402076ec574547cd32f5-2017-07-29-075827.png?v=1510546233123",
+            "title": "Trào lưu trà sữa ở Sài Gòn đã dậy thì thành công như thế nào?",
+            "author": "Kent",
+            "date": "16/05/2024",
+            "desc": "Trà sữa du nhập vào Việt Nam khoảng 15 năm trước nhưng phải mất tầm 4 năm sau đó, thức uống này mới được giới trẻ ưa chuộng..."
+        },
+        {
+            "url": "https://bizweb.dktcdn.net/100/270/285/articles/gcs-thumb-w-58f6d31076ec576a39e51a6c-2017-04-19-030138.png?v=1510545916130",
+            "title": "Trà sữa nét chấm phá cho nghệ thuật thưởng trà xứ Đài",
+            "author": "Kent",
+            "date": "16/05/2024",
+            "desc": "Đối với nhiều nước châu Á, trà được xem là “quốc ẩm” với bề dày hàng nghìn năm lịch sử, cùng những tinh hoa tự nhiên cất giấu trong từng lá trà...."
+        },
+        {
+            "url": "https://bizweb.dktcdn.net/100/270/285/articles/gcs-thumb-w-58ff2e3b76ec573f2167a6d1-2017-04-25-110846.png?v=1510545800677",
+            "title": "Trà sữa thức uống tưởng đơn giản nhưng cũng lắm công phu",
+            "author": "Kent",
+            "date": "16/05/2024",
+            "desc": "Các thương hiệu trà sữa ngày càng đầu tư vào công nghệ sản xuất để thỏa mãn thị hiếu của thực khách. Nhưng điều đó lại vô tình làm mất đi hương vị nguyên bản của thức uống này...."
+        }
+    ],
+    "menu": [
+        {
+            "id": 0,
+            "name": "Home",
+            "slug": "/"
+        },
+        {
+            "id": 1,
+            "name": "Product",
+            "slug": "/san-pham"
+        },
+        {
+            "id": 2,
+            "name": "Blog",
+            "slug": "/tin-tuc"
+        },
+        {
+            "id": 3,
+            "name": "About us",
+            "slug": "/gioi-thieu"
+        },
+        {
+            "id": 4,
+            "name": "Contact",
+            "slug": "/lien-he"
+        }
+    ],
+    "products": [
+        {
+            "url": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/05-a41e0c7f-e4c9-4ad2-9412-1e8c4d79a028.jpg?v=1510561983257",
+            "title": "Sinh tố dâu tây",
+            "price": "42000",
+            "salePrice": "52000",
+            "category": "Sinh tố",
+            "brand": "BoBa Pop"
+        },
+        {
+            "url": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/04-de27bf4e-5fa7-4517-a796-94b7d46d5b4e.jpg?v=1510560499817",
+            "title": "Trà sữa kiwi",
+            "price": "32000",
+            "salePrice": "45000",
+            "category": "Trà",
+            "brand": "BoBa Pop"
+        },
+        {
+            "url": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/2016910153030-tra-olong-sui-bot.jpg?v=1510561084490",
+            "title": "Hồng trà mật ong",
+            "price": "36000",
+            "salePrice": "42000",
+            "category": "Trà",
+            "brand": "BoBa Pop"
+        },
+        {
+            "url": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/2016910154723-tra-xanh-xi-muoi.jpg?v=1510561254037",
+            "title": "Trà chanh đài loan",
+            "price": "27000",
+            "salePrice": "32000",
+            "category": "Trà",
+            "brand": "BoBa Pop"
+        },
+        {
+            "url": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/2016910154734-tra-xanh-xoai-904dfdbb-5175-4791-8261-32251ed08478.jpg?v=1510561578387",
+            "title": "Sinh tố xoài aloha",
+            "price": "34000",
+            "salePrice": "49000",
+            "category": "Sinh tố",
+            "brand": "BoBa Pop"
+        },
+        {
+            "url": "https://product.hstatic.net/1000075078/product/1675355354_bg-tch-sua-da-no_4fbf208885ed464ab4b5e145336d42a2.jpg",
+            "title": "Cà phê Sữa Đá",
+            "price": "39000",
+            "salePrice": "",
+            "category": "Cà phê",
+            "brand": "The Coffee House"
+        }
+    ]
+}
