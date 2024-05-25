@@ -6,10 +6,10 @@ import { useLocation } from 'react-router-dom';
 
 const Contact = () => {
     const id = useId();
-    const location = useLocation();
+    const { pathname } = useLocation();
     return (
         <main className="container mx-auto mb-10">
-            <BreadCrumbs slug={location.pathname} />
+            <BreadCrumbs slug={pathname} />
             <section className="flex items-center gap-x-10">
                 <div className="w-2/5 h-[450px]">
                     <iframe

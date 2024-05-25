@@ -4,9 +4,19 @@ import Slider from '../../components/slide/Slider';
 import ProductItem from '../../components/common/product/ProductItem';
 import ProductWrap from '../../components/common/product/ProductWrap';
 import PostItem from '../../components/common/post/PostItem';
+import { useState } from 'react';
+import strToSlug from '../../utils/strToSlug';
+import classNames from '../../utils/classNames';
 
 const Home = () => {
-    const { category, products, news } = data;
+    const { category, products, post } = data;
+    const [show, setShow] = useState('sinh-to');
+    const [url, setUrl] = useState('');
+    const handleSetTab = (cate, link) => {
+        setShow(strToSlug(cate));
+        setUrl(link);
+    };
+
     return (
         <main>
             <Slider />
@@ -22,10 +32,10 @@ const Home = () => {
                             .map((item, index) => (
                                 <ProductItem
                                     key={index}
-                                    url={item.url}
-                                    title={item.title}
+                                    url={item.image}
+                                    title={item.name}
                                     price={item.price}
-                                    salePrice={item.salePrice}
+                                    salePrice={item.pricesale}
                                 />
                             ))}
                     </ProductWrap>
@@ -33,7 +43,7 @@ const Home = () => {
                 {/* Main product */}
                 <section className="mb-10">
                     <h2 className="text-2xl font-semibold text-center uppercase hover:text-primary">
-                        <Link to="#">Đồ uống ưa thích</Link>
+                        <Link to="/san-pham">Đồ uống ưa thích</Link>
                     </h2>
                     <nav className="py-4 border-y border-y-lightStrock my-9">
                         <ul className="flex items-center justify-center uppercase gap-x-12">
@@ -41,65 +51,80 @@ const Home = () => {
                                 .filter((item, index) => index < 6)
                                 .map((item) => (
                                     <li
-                                        className="cursor-pointer hover:text-primary"
+                                        className={classNames(
+                                            'cursor-pointer hover:text-primary',
+                                            strToSlug(item.name) === show
+                                                ? 'text-primary'
+                                                : '',
+                                        )}
                                         key={item.id}
+                                        onClick={() =>
+                                            handleSetTab(
+                                                item.name,
+                                                `/danh-muc/${item.slug}`,
+                                            )
+                                        }
                                     >
-                                        {item.title}
+                                        {item.name}
                                     </li>
                                 ))}
                         </ul>
                     </nav>
                     <ProductWrap className="max-w-[1200px] mx-auto">
                         {products
-                            .filter((item, index) => index < 8)
+                            .filter(
+                                (item, index) =>
+                                    index < 8 &&
+                                    strToSlug(item.category) === show,
+                            )
                             .map((item, index) => (
                                 <ProductItem
                                     key={index}
-                                    url={item.url}
-                                    title={item.title}
+                                    url={item.image}
+                                    title={item.name}
                                     price={item.price}
-                                    salePrice={item.salePrice}
+                                    salePrice={item.pricesale}
                                 />
                             ))}
                     </ProductWrap>
                     <div className="text-center">
-                        <a
-                            href="#"
+                        <Link
+                            to={url}
                             className="inline-block px-5 py-[6px] text-lg text-white bg-primary rounded-xl"
                         >
                             Xem thêm
-                        </a>
+                        </Link>
                     </div>
                 </section>
-                {/* News */}
+                {/* Post */}
                 <section className="mb-10">
                     <h2 className="mb-5 text-2xl font-semibold text-center uppercase">
-                        <a href="#" className="hover:text-primary">
+                        <Link to="#" className="hover:text-primary">
                             Tin tức
-                        </a>
+                        </Link>
                     </h2>
                     <div className="grid grid-cols-3 mb-10 gap-x-5">
                         {/* Blog item */}
-                        {news
+                        {post
                             .filter((item, index) => index < 3)
-                            .map((item, index) => (
+                            .map((item) => (
                                 <PostItem
-                                    key={index}
-                                    url={item.url}
+                                    key={item.id}
+                                    url={item.image}
                                     title={item.title}
-                                    author={item.author}
+                                    author={item.updated_by}
                                     date={item.date}
                                     desc={item.desc}
                                 />
                             ))}
                     </div>
                     <div className="text-center">
-                        <a
-                            href="#"
+                        <Link
+                            to="#"
                             className="inline-block px-5 py-[6px] text-lg text-white bg-primary rounded-xl"
                         >
                             Xem thêm
-                        </a>
+                        </Link>
                     </div>
                 </section>
             </div>

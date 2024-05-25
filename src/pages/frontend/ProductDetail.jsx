@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { BreadCrumbs } from '../../components/breadcrumb';
 import { Button } from '../../components/button';
 import ProductItem from '../../components/common/product/ProductItem';
@@ -8,10 +8,11 @@ import data from '../../data.json';
 
 const ProductDetail = () => {
     const { products } = data;
+    const { pathname } = useLocation();
     const btnAction = 'py-3 font-semibold uppercase w-60';
     return (
         <main className="container mx-auto mb-10">
-            <BreadCrumbs />
+            <BreadCrumbs slug={pathname} />
             <section className="flex mb-10 gap-x-10">
                 <div className="w-2/5 px-4">
                     <div className="w-full h-[480px] rounded-[10px] overflow-hidden">

@@ -18,15 +18,19 @@ const listSorted = [
 
 const ProductCategory = () => {
     const { products, category } = data;
-    const location = useLocation();
-    const cateSlug = location.pathname.split('/').pop();
+    const { pathname } = useLocation();
+    const cateSlug = pathname.split('/').pop();
     let openPagination = false;
     return (
         <main className="container mx-auto mb-10">
-            <BreadCrumbs slug={location.pathname} />
+            <BreadCrumbs slug={pathname} />
             <section className="flex gap-x-10">
                 <aside className="w-1/4">
-                    <SidebarProduct title="Danh mục" list={category} />
+                    <SidebarProduct
+                        title="Danh mục"
+                        link="/danh-muc"
+                        list={category}
+                    />
                 </aside>
                 <div className="flex-1">
                     <div className="flex justify-end mb-5">
@@ -46,10 +50,10 @@ const ProductCategory = () => {
                             .map((item, index) => (
                                 <ProductItem
                                     key={index}
-                                    url={item.url}
-                                    title={item.title}
+                                    url={item.image}
+                                    title={item.name}
                                     price={item.price}
-                                    salePrice={item.salePrice}
+                                    salePrice={item.pricesale}
                                 />
                             ))}
                     </ProductWrap>

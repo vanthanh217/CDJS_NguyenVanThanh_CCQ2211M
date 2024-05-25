@@ -1,62 +1,108 @@
 {
-    "brand": [
+    "banner": [
         {
             "id": 0,
-            "title": "The Coffee House",
-            "url": "/thuong-hieu/the-coffee-house"
+            "image": "https://file.hstatic.net/1000075078/file/web_moi_-_desktop_7b7d644a948c41f8ba5a5e4e959d1de2.jpg",
+            "name": "Slider 01",
+            "link": "#",
+            "position": "slide"
         },
         {
             "id": 1,
-            "title": "BoBa Pop",
-            "url": "/thuong-hieu/boba-pop"
+            "image": "https://file.hstatic.net/1000075078/file/desktop_55d525e1af7e4784a1ae64159546bec3.jpg",
+            "name": "Slider 02",
+            "link": "#",
+            "position": "slide"
+        }
+    ],
+    "brand": [
+        {
+            "id": 0,
+            "name": "The Coffee House",
+            "slug": "the-coffee-house",
+            "image": ""
+        },
+        {
+            "id": 1,
+            "name": "BoBa Pop",
+            "slug": "boba-pop",
+            "image": ""
         }
     ],
     "category": [
         {
             "id": 0,
-            "title": "Sinh tố",
-            "url": "/danh-muc/sinh-to"
+            "name": "Sinh tố",
+            "slug": "sinh-to",
+            "image": ""
         },
         {
             "id": 1,
-            "title": "Trà trái cây",
-            "url": "/danh-muc/tra-trai-cay"
+            "name": "Trà",
+            "slug": "tra"
         },
         {
             "id": 2,
-            "title": "Cà phê",
-            "url": "/danh-muc/ca-phe"
+            "name": "Cà phê",
+            "slug": "ca-phe"
         },
         {
             "id": 3,
-            "title": "Bánh mochi",
-            "url": "/danh-muc/mochi"
+            "name": "Bánh mochi",
+            "slug": "mochi"
         },
         {
             "id": 4,
-            "title": "Đồ uống nóng",
-            "url": "/danh-muc/do-uong-nong"
+            "name": "Đồ uống nóng",
+            "slug": "do-uong-nong"
         }
     ],
-    "news": [
+    "contact": [
         {
-            "url": "https://bizweb.dktcdn.net/100/270/285/articles/gcs-thumb-w-597c402076ec574547cd32f5-2017-07-29-075827.png?v=1510546233123",
+            "id": 0,
+            "user_id": 0,
+            "name": "Nguyễn Văn Thành",
+            "email": "nguyenvanthanh210704@gmail.com",
+            "phone": "0835913025",
+            "title": "Demo"
+        },
+        {
+            "id": 1,
+            "user_id": 1,
+            "name": "Văn Thành",
+            "email": "vanthanh210704@gmail.com",
+            "phone": "0835913025",
+            "title": "Test"
+        }
+    ],
+    "post": [
+        {
+            "id": 0,
+            "topic_id": 0,
+            "image": "https://bizweb.dktcdn.net/100/270/285/articles/gcs-thumb-w-597c402076ec574547cd32f5-2017-07-29-075827.png?v=1510546233123",
             "title": "Trào lưu trà sữa ở Sài Gòn đã dậy thì thành công như thế nào?",
-            "author": "Kent",
+            "slug": "trao-luu-tra-sua-o-sai-gon-a-day-thi-thanh-cong-nhu-the-nao",
+            "updated_by": "Kent",
             "date": "16/05/2024",
             "desc": "Trà sữa du nhập vào Việt Nam khoảng 15 năm trước nhưng phải mất tầm 4 năm sau đó, thức uống này mới được giới trẻ ưa chuộng..."
         },
         {
-            "url": "https://bizweb.dktcdn.net/100/270/285/articles/gcs-thumb-w-58f6d31076ec576a39e51a6c-2017-04-19-030138.png?v=1510545916130",
+            "id": 1,
+            "topic_id": 0,
+            "image": "https://bizweb.dktcdn.net/100/270/285/articles/gcs-thumb-w-58f6d31076ec576a39e51a6c-2017-04-19-030138.png?v=1510545916130",
             "title": "Trà sữa nét chấm phá cho nghệ thuật thưởng trà xứ Đài",
-            "author": "Kent",
+            "slug": "tra-sua-net-cham-pha-cho-nghe-thuat-thuong-tra-xu-ai",
+            "updated_by": "Kent",
             "date": "16/05/2024",
             "desc": "Đối với nhiều nước châu Á, trà được xem là “quốc ẩm” với bề dày hàng nghìn năm lịch sử, cùng những tinh hoa tự nhiên cất giấu trong từng lá trà...."
         },
         {
-            "url": "https://bizweb.dktcdn.net/100/270/285/articles/gcs-thumb-w-58ff2e3b76ec573f2167a6d1-2017-04-25-110846.png?v=1510545800677",
+            "id": 2,
+            "topic_id": 0,
+            "image": "https://bizweb.dktcdn.net/100/270/285/articles/gcs-thumb-w-58ff2e3b76ec573f2167a6d1-2017-04-25-110846.png?v=1510545800677",
             "title": "Trà sữa thức uống tưởng đơn giản nhưng cũng lắm công phu",
-            "author": "Kent",
+            "slug": "tra-sua-thuc-uong-tuong-on-gian-nhung-cung-lam-cong-phu",
+            "updated_by": "Kent",
             "date": "16/05/2024",
             "desc": "Các thương hiệu trà sữa ngày càng đầu tư vào công nghệ sản xuất để thỏa mãn thị hiếu của thực khách. Nhưng điều đó lại vô tình làm mất đi hương vị nguyên bản của thức uống này...."
         }
@@ -65,77 +111,166 @@
         {
             "id": 0,
             "name": "Home",
-            "slug": "/"
+            "link": "/",
+            "type": "menu"
         },
         {
             "id": 1,
             "name": "Product",
-            "slug": "/san-pham"
+            "link": "/san-pham",
+            "type": "menu"
         },
         {
             "id": 2,
             "name": "Blog",
-            "slug": "/tin-tuc"
+            "link": "/tin-tuc",
+            "type": "menu"
         },
         {
             "id": 3,
             "name": "About us",
-            "slug": "/gioi-thieu"
+            "link": "/gioi-thieu",
+            "type": "menu"
         },
         {
             "id": 4,
             "name": "Contact",
-            "slug": "/lien-he"
+            "link": "/lien-he",
+            "type": "menu"
         }
     ],
     "products": [
         {
-            "url": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/05-a41e0c7f-e4c9-4ad2-9412-1e8c4d79a028.jpg?v=1510561983257",
-            "title": "Sinh tố dâu tây",
+            "id": 0,
+            "image": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/05-a41e0c7f-e4c9-4ad2-9412-1e8c4d79a028.jpg?v=1510561983257",
+            "name": "Sinh tố dâu tây",
+            "slug": "sinh-to-dau-tay",
             "price": "42000",
-            "salePrice": "52000",
+            "pricesale": "52000",
             "category": "Sinh tố",
             "brand": "BoBa Pop"
         },
         {
-            "url": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/04-de27bf4e-5fa7-4517-a796-94b7d46d5b4e.jpg?v=1510560499817",
-            "title": "Trà sữa kiwi",
+            "id": 1,
+            "image": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/04-de27bf4e-5fa7-4517-a796-94b7d46d5b4e.jpg?v=1510560499817",
+            "name": "Trà sữa kiwi",
+            "slug": "tra-sua-kiwi",
             "price": "32000",
-            "salePrice": "45000",
+            "pricesale": "45000",
             "category": "Trà",
             "brand": "BoBa Pop"
         },
         {
-            "url": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/2016910153030-tra-olong-sui-bot.jpg?v=1510561084490",
-            "title": "Hồng trà mật ong",
+            "id": 2,
+            "image": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/2016910153030-tra-olong-sui-bot.jpg?v=1510561084490",
+            "name": "Hồng trà mật ong",
+            "slug": "hong-tra-mat-ong",
             "price": "36000",
-            "salePrice": "42000",
+            "pricesale": "42000",
             "category": "Trà",
             "brand": "BoBa Pop"
         },
         {
-            "url": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/2016910154723-tra-xanh-xi-muoi.jpg?v=1510561254037",
-            "title": "Trà chanh đài loan",
+            "id": 3,
+            "image": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/2016910154723-tra-xanh-xi-muoi.jpg?v=1510561254037",
+            "name": "Trà chanh Đài Loan",
+            "slug": "tra-chang-dai-loan",
             "price": "27000",
-            "salePrice": "32000",
+            "pricesale": "32000",
             "category": "Trà",
             "brand": "BoBa Pop"
         },
         {
-            "url": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/2016910154734-tra-xanh-xoai-904dfdbb-5175-4791-8261-32251ed08478.jpg?v=1510561578387",
-            "title": "Sinh tố xoài aloha",
+            "id": 4,
+            "image": "https://bizweb.dktcdn.net/thumb/large/100/270/285/products/2016910154734-tra-xanh-xoai-904dfdbb-5175-4791-8261-32251ed08478.jpg?v=1510561578387",
+            "name": "Sinh tố xoài aloha",
+            "slug": "sinh-to-xoai-aloha",
             "price": "34000",
-            "salePrice": "49000",
+            "pricesale": "49000",
             "category": "Sinh tố",
             "brand": "BoBa Pop"
         },
         {
-            "url": "https://product.hstatic.net/1000075078/product/1675355354_bg-tch-sua-da-no_4fbf208885ed464ab4b5e145336d42a2.jpg",
-            "title": "Cà phê Sữa Đá",
+            "id": 5,
+            "image": "https://product.hstatic.net/1000075078/product/1675355354_bg-tch-sua-da-no_4fbf208885ed464ab4b5e145336d42a2.jpg",
+            "name": "Cà phê Sữa Đá",
+            "slug": "ca-phe-sua-da",
             "price": "39000",
-            "salePrice": "",
+            "pricesale": "",
             "category": "Cà phê",
             "brand": "The Coffee House"
+        }
+    ],
+    "order": [
+        {
+            "id": 0,
+            "user_id": 0,
+            "name": "Nguyễn Văn Thành",
+            "phone": "0835913025",
+            "email": "nguyenvanthanh210704@gmail.com",
+            "address": "Tp. Hồ Chí Minh"
+        },
+        {
+            "id": 1,
+            "user_id": 1,
+            "name": "Văn Thành",
+            "phone": "0835913025",
+            "email": "vanthanh210704@gmail.com",
+            "address": "Tp. Thủ Đức"
+        }
+    ],
+    "orderdetail": [
+        {
+            "id": 0,
+            "order_id": 0,
+            "product_id": 0,
+            "price": "39000",
+            "qty": 3,
+            "amount": "117000"
+        },
+        {
+            "id": 1,
+            "order_id": 1,
+            "product_id": 1,
+            "price": "32000",
+            "qty": 5,
+            "amount": "160000"
+        }
+    ],
+    "topic": [
+        {
+            "id": 0,
+            "name": "Tin tức",
+            "slug": "tin-tuc",
+            "description": "Tin tức"
+        },
+        {
+            "id": 1,
+            "name": "Tin tức",
+            "slug": "tin-tuc",
+            "description": "Post"
+        }
+    ],
+    "user": [
+        {
+            "id": 0,
+            "name": "Nguyễn Văn Thành",
+            "email": "nguyenvanthanh210704@gmail.com",
+            "phone": "0835913025",
+            "username": "vanthanh217",
+            "password": "123456",
+            "address": "Tp. Hồ Chí Minh",
+            "image": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bmF0dXJlfGVufDB8fDB8fHww"
+        },
+        {
+            "id": 1,
+            "name": "Văn Thành",
+            "email": "vanthanh210704@gmail.com",
+            "phone": "0835913025",
+            "username": "vanthanh0506",
+            "password": "123456",
+            "address": "Tp. Thủ Đức",
+            "image": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bmF0dXJlfGVufDB8fDB8fHww"
         }
     ]
 }

@@ -1,21 +1,21 @@
 import { useRoutes } from 'react-router-dom';
-import LayoutSite from './layout/LayoutSite';
-import LayoutAdmin from './layout/LayoutAdmin';
-import Routes from './routes';
 import NotFound from './pages/NotFound';
+import LayoutAdmin from './layout/LayoutAdmin';
+import LayoutSite from './layout/LayoutSite';
+import Routers from './routers';
 
 function App() {
-    const { RouteSite, RouteAdmin } = Routes;
+    const { RouterSite, RouterAdmin } = Routers;
     let element = useRoutes([
         {
             path: '/',
             element: <LayoutSite />,
-            children: RouteSite,
+            children: RouterSite,
         },
         {
             path: '/admin',
             element: <LayoutAdmin />,
-            children: RouteAdmin,
+            children: RouterAdmin,
         },
         {
             path: '*',

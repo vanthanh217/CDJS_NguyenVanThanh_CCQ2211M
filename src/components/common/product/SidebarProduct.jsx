@@ -6,7 +6,7 @@ const SidebarProduct = (props) => {
     const listItemLink =
         'block py-2 font-normal border-b hover:text-primary text-textPrimary border-lightStrock';
 
-    const { title = '', list = [] } = props;
+    const { title = '', list = [], link = '' } = props;
     return (
         <div className="rounded-[10px] bg-white shadow-box overflow-hidden mb-7">
             <h2 className="px-5 py-2 mb-4 text-xl font-medium text-white uppercase bg-primary">
@@ -17,8 +17,11 @@ const SidebarProduct = (props) => {
                     list.length > 0 &&
                     list.map((item, index) => (
                         <li className={listItem} key={index}>
-                            <Link to={item.url} className={listItemLink}>
-                                {item.title}
+                            <Link
+                                to={`${link}/${item.slug}`}
+                                className={listItemLink}
+                            >
+                                {item.name}
                             </Link>
                         </li>
                     ))}
@@ -30,6 +33,7 @@ const SidebarProduct = (props) => {
 SidebarProduct.propTypes = {
     title: PropTypes.string,
     list: PropTypes.array,
+    link: PropTypes.string,
 };
 
 export default SidebarProduct;
