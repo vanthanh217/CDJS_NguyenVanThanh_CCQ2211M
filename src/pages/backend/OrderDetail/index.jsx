@@ -12,7 +12,7 @@ const OrderDetail = () => {
     const { orderdetail } = db;
     return (
         <>
-            <HeaderContent title={'Order Detail'} />
+            <HeaderContent title={'Order Detail'} addBtn={false} />
             <Table className="mb-7">
                 <thead>
                     <tr>
@@ -34,7 +34,10 @@ const OrderDetail = () => {
                             .map((item) => (
                                 <tr key={item.id}>
                                     <td>
-                                        <Input type="checkbox" />
+                                        <Input
+                                            type="checkbox"
+                                            className={'!p-0'}
+                                        />
                                     </td>
                                     <td>{item.id}</td>
                                     <td>{item.order_id}</td>

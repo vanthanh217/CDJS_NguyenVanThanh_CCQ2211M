@@ -33,7 +33,10 @@ const Product = () => {
                             .map((item) => (
                                 <tr key={item.id}>
                                     <td>
-                                        <Input type="checkbox" />
+                                        <Input
+                                            type="checkbox"
+                                            className={'!p-0'}
+                                        />
                                     </td>
                                     <td>{item.id}</td>
                                     <td className="!pr-[50px]">
@@ -41,7 +44,7 @@ const Product = () => {
                                             <img
                                                 src={item.image}
                                                 alt={item.image}
-                                                className="w-[75px] h-[60px] rounded object-cover"
+                                                className="w-[80px] h-[65px] rounded object-cover"
                                             />
                                             <div className="flex flex-col flex-1 gap-y-2">
                                                 <p className="text-sm text-text2nd">

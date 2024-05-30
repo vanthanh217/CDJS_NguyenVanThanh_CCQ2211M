@@ -61,6 +61,7 @@ const Contact = () => {
                                 name="content"
                                 id={`content${id}`}
                                 placeholder="Space for your message"
+                                className={'h-[170px]'}
                             />
                         </FormGroup>
                         <FormGroup className="px-4 mt-12">

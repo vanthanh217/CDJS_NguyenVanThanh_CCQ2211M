@@ -5,7 +5,7 @@ const Header = () => {
         <header className="flex items-center justify-between p-4 m-[20px_20px_40px] shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] rounded-xl">
             <div>
                 <p className="text-xl font-semibold text-textPrimary">
-                    WynK Coffe
+                    WynK Coffee
                 </p>
                 <span className="text-sm text-text2nd">Food and Drink</span>
             </div>

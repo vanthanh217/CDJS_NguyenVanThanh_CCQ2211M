@@ -32,7 +32,10 @@ const Post = () => {
                             .map((item) => (
                                 <tr key={item.id}>
                                     <td>
-                                        <Input type="checkbox" />
+                                        <Input
+                                            type="checkbox"
+                                            className={'!p-0'}
+                                        />
                                     </td>
                                     <td>{item.id}</td>
                                     <td className="!pr-[50px]">
@@ -40,7 +43,7 @@ const Post = () => {
                                             <img
                                                 src={item.image}
                                                 alt={item.image}
-                                                className="w-[75px] h-[65px] rounded object-cover"
+                                                className="w-[80px] h-[65px] rounded-lg object-cover"
                                             />
                                             <div className="flex flex-col flex-1">
                                                 <span className="inline-block mb-1 text-sm text-text2nd">

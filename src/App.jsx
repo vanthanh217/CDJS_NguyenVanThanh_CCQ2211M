@@ -13,7 +13,7 @@ function App() {
             children: RouterSite,
         },
         {
-            path: '/admin',
+            path: '/admin/',
             element: <LayoutAdmin />,
             children: RouterAdmin,
         },

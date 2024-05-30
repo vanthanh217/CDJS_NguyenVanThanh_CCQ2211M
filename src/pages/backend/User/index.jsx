@@ -33,7 +33,10 @@ const User = () => {
                             .map((item) => (
                                 <tr key={item.id}>
                                     <td>
-                                        <Input type="checkbox" />
+                                        <Input
+                                            type="checkbox"
+                                            className={'!p-0'}
+                                        />
                                     </td>
                                     <td>{item.id}</td>
                                     <td className="!pr-[50px]">

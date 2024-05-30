@@ -7,6 +7,7 @@ export default function useToggle(initialState = false) {
     };
     return {
         state,
+        setState,
         toggle,
     };
 }

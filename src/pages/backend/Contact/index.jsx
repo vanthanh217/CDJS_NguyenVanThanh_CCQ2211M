@@ -12,7 +12,7 @@ const Contact = () => {
     const { contact } = db;
     return (
         <>
-            <HeaderContent title={'Contact'} />
+            <HeaderContent title={'Contact'} addBtn={false} />
             <Table className="mb-7">
                 <thead>
                     <tr>
@@ -33,7 +33,10 @@ const Contact = () => {
                             .map((item) => (
                                 <tr key={item.id}>
                                     <td>
-                                        <Input type="checkbox" />
+                                        <Input
+                                            type="checkbox"
+                                            className={'!p-0'}
+                                        />
                                     </td>
                                     <td>{item.id}</td>
                                     <td>{item.user_id}</td>

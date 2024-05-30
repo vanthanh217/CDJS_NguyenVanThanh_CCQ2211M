@@ -22,7 +22,7 @@ const BreadCrumbs = (props) => {
     const breadcrumbItem = 'flex items-center gap-x-2';
     return (
         <section className="my-8">
-            <ul className="flex items-center gap-x-7 rounded-[10px] p-5 bg-white text-lightGray flex-wrap shadow-box">
+            <ul className="flex items-center gap-x-7 rounded-[10px] p-5 bg-white text-text2nd flex-wrap shadow-box">
                 {listBreadcrumb.map((item, index) => (
                     <li className={breadcrumbItem} key={index}>
                         <Link to={item.url}>{item.label}</Link>

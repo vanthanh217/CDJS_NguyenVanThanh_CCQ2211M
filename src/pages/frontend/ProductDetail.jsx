@@ -84,7 +84,7 @@ const ProductDetail = () => {
                 </p>
             </div>
             <section className="mb-10">
-                <h1 className="mb-4 text-3xl font-medium text-center uppercase hover:text-primary">
+                <h1 className="mb-5 text-3xl font-medium text-center uppercase hover:text-primary">
                     <Link to="/">Sản phẩm liên quan</Link>
                 </h1>
                 <ProductWrap>
@@ -93,10 +93,10 @@ const ProductDetail = () => {
                         .map((item, index) => (
                             <ProductItem
                                 key={index}
-                                url={item.url}
-                                title={item.title}
+                                url={item.image}
+                                title={item.name}
                                 price={item.price}
-                                salePrice={item.salePrice}
+                                salePrice={item.pricesale}
                             />
                         ))}
                 </ProductWrap>

@@ -1,27 +1,38 @@
 import PropTypes from 'prop-types';
 import styles from './Post.module.scss';
 import classNames from '../../../utils/classNames';
+import { Link } from 'react-router-dom';
 
 const PostItem = (props) => {
-    const { url = '', author = '', date = '', title = '', desc = '' } = props;
+    const {
+        to = '',
+        url = '',
+        author = '',
+        date = '',
+        title = '',
+        desc = '',
+    } = props;
     return (
         <div className={classNames('relative mb-8 item-blog', styles.postItem)}>
             {/* Thumb */}
             <div className="overflow-hidden rounded-lg">
-                <a href="#">
+                <Link to={to} className="block">
                     <img
                         src={url}
-                        alt=""
+                        alt={url}
                         className="object-cover w-full h-full"
                     />
-                </a>
+                </Link>
             </div>
             {/* Content */}
             <div className="absolute p-[10px] bg-secondary text-white w-[calc(100%-30px)] left-0 bottom-[-25px] rounded-[0px_20px_0px_20px]">
                 <h3 className="mb-2">
-                    <a href="#" className="block font-semibold h-11">
+                    <Link
+                        to={to}
+                        className="block font-semibold h-11 line-clamp-2"
+                    >
                         {title}
-                    </a>
+                    </Link>
                 </h3>
                 {/* Author & Dates */}
                 <p className="flex items-center justify-between text-sm text-white">
@@ -45,6 +56,7 @@ const PostItem = (props) => {
 };
 
 PostItem.propTypes = {
+    to: PropTypes.string,
     url: PropTypes.string,
     author: PropTypes.string,
     date: PropTypes.string,

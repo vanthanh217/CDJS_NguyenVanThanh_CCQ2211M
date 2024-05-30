@@ -1,61 +1,86 @@
 import Banner from '../pages/backend/Banner';
+import BannerCreate from '../pages/backend/Banner/BannerCreate';
 import Brand from '../pages/backend/Brand';
 import Category from '../pages/backend/Category';
 import Contact from '../pages/backend/Contact';
 import Menu from '../pages/backend/Menu';
+import MenuCreate from '../pages/backend/Menu/MenuCreate';
 import Order from '../pages/backend/Order';
 import OrderDetail from '../pages/backend/OrderDetail';
 import Post from '../pages/backend/Post';
+import PostCreate from '../pages/backend/Post/PostCreate';
 import Product from '../pages/backend/Product';
+import ProductCreate from '../pages/backend/Product/ProductCreate';
 import Topic from '../pages/backend/Topic';
 import User from '../pages/backend/User';
+import UserCreate from '../pages/backend/User/UserCreate';
 
 // Vì sử dụng React bằng ViteJS nên phải .jsx để support cho element chứa tag <> </>
 
 const RouterAdmin = [
     {
-        path: '/admin/banner',
+        path: 'banner',
         element: <Banner />,
     },
     {
-        path: '/admin/brand',
+        path: 'banner/create',
+        element: <BannerCreate />,
+    },
+    {
+        path: 'brand',
         element: <Brand />,
     },
     {
-        path: '/admin/category',
+        path: 'category',
         element: <Category />,
     },
     {
-        path: '/admin/contact',
+        path: 'contact',
         element: <Contact />,
     },
     {
-        path: '/admin/menu',
+        path: 'menu',
         element: <Menu />,
     },
     {
-        path: '/admin/order',
+        path: 'menu/create',
+        element: <MenuCreate />,
+    },
+    {
+        path: 'order',
         element: <Order />,
     },
     {
-        path: '/admin/orderdetail',
+        path: 'orderdetail',
         element: <OrderDetail />,
     },
     {
-        path: '/admin/product',
+        path: 'product',
         element: <Product />,
     },
     {
-        path: '/admin/post',
+        path: 'product/create',
+        element: <ProductCreate />,
+    },
+    {
+        path: 'post',
         element: <Post />,
     },
     {
-        path: '/admin/topic',
+        path: 'post/create',
+        element: <PostCreate />,
+    },
+    {
+        path: 'topic',
         element: <Topic />,
     },
     {
-        path: '/admin/user',
+        path: 'user',
         element: <User />,
+    },
+    {
+        path: 'user/create',
+        element: <UserCreate />,
     },
 ];
 

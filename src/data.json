@@ -112,31 +112,36 @@
             "id": 0,
             "name": "Home",
             "link": "/",
-            "type": "menu"
+            "type": "menu",
+            "position": "Header"
         },
         {
             "id": 1,
             "name": "Product",
             "link": "/san-pham",
-            "type": "menu"
+            "type": "menu",
+            "position": "Header"
         },
         {
             "id": 2,
             "name": "Blog",
             "link": "/tin-tuc",
-            "type": "menu"
+            "type": "menu",
+            "position": "Header"
         },
         {
             "id": 3,
             "name": "About us",
             "link": "/gioi-thieu",
-            "type": "menu"
+            "type": "menu",
+            "position": "Header"
         },
         {
             "id": 4,
             "name": "Contact",
             "link": "/lien-he",
-            "type": "menu"
+            "type": "menu",
+            "position": "Header"
         }
     ],
     "products": [
@@ -243,12 +248,6 @@
             "name": "Tin tức",
             "slug": "tin-tuc",
             "description": "Tin tức"
-        },
-        {
-            "id": 1,
-            "name": "Tin tức",
-            "slug": "tin-tuc",
-            "description": "Post"
         }
     ],
     "user": [

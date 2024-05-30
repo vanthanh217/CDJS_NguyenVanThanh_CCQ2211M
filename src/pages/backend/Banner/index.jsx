@@ -33,7 +33,10 @@ const Banner = () => {
                             .map((item) => (
                                 <tr key={item.id}>
                                     <td>
-                                        <Input type="checkbox" />
+                                        <Input
+                                            type="checkbox"
+                                            className={'!p-0'}
+                                        />
                                     </td>
                                     <td>{item.id}</td>
                                     <td className="!pr-[50px] w-[450px]">
@@ -41,7 +44,7 @@ const Banner = () => {
                                             <img
                                                 src={item.image}
                                                 alt={item.image}
-                                                className="object-cover w-full rounded"
+                                                className="object-cover w-full rounded-lg"
                                             />
                                         )}
                                     </td>

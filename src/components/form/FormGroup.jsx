@@ -3,7 +3,11 @@ import classNames from '../../utils/classNames';
 
 const FormGroup = (props) => {
     const { children, className = '' } = props;
-    return <div className={classNames('mb-3', className)}>{children}</div>;
+    return (
+        <div className={classNames('mb-3', className)} {...props}>
+            {children}
+        </div>
+    );
 };
 
 FormGroup.propTypes = {

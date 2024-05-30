@@ -7,7 +7,7 @@ const TextArea = (props) => {
         <textarea
             name={name}
             className={classNames(
-                'w-full h-[170px] py-3 px-4 border border-lightStrock rounded-[10px] text-sm text-textPrimary placeholder:text-text2nd',
+                'w-full py-3 px-4 border border-lightStrock rounded-[10px] text-sm text-textPrimary placeholder:text-text2nd',
                 className,
             )}
             {...rest}

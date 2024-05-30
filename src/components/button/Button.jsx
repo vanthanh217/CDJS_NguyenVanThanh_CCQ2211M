@@ -19,7 +19,6 @@ const Button = (props) => {
         return (
             <Link
                 to={to}
-                kind={kind}
                 className={classNames(
                     'inline-block',
                     kind === 'primary' ? 'text-white bg-primary' : '',
@@ -27,6 +26,7 @@ const Button = (props) => {
                     kind === 'normal'
                         ? 'text-text2nd border border-lightStrock'
                         : '',
+                    kind === 'default' ? 'text-white' : '',
                     btnStyle,
                     className,
                 )}
@@ -45,6 +45,7 @@ const Button = (props) => {
                         ? 'text-text2nd border border-lightStrock'
                         : '',
                     kind === 'ghost' ? ghostBtnStyle : '',
+                    kind === 'default' ? 'text-white' : '',
                     className,
                 )}
                 onClick={onClick}
@@ -61,7 +62,7 @@ Button.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     onClick: PropTypes.func,
-    kind: PropTypes.oneOf(['primary', 'ghost', 'normal']),
+    kind: PropTypes.oneOf(['primary', 'ghost', 'normal', 'default']),
 };
 
 export default Button;

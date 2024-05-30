@@ -21,6 +21,7 @@ const Menu = () => {
                         <th>Name</th>
                         <th>Link</th>
                         <th>Type</th>
+                        <th>Position</th>
                         <th className="w-40 !text-center">Actions</th>
                     </tr>
                 </thead>
@@ -32,12 +33,16 @@ const Menu = () => {
                             .map((item) => (
                                 <tr key={item.id}>
                                     <td>
-                                        <Input type="checkbox" />
+                                        <Input
+                                            type="checkbox"
+                                            className={'!p-0'}
+                                        />
                                     </td>
                                     <td>{item.id}</td>
                                     <td>{item.name}</td>
                                     <td>{item.link}</td>
                                     <td>{item.type}</td>
+                                    <td>{item.position}</td>
                                     <td>
                                         <div className="flex items-center justify-center text-iconText gap-x-4">
                                             <Button

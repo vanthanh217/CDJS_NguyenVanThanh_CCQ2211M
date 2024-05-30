@@ -4,7 +4,7 @@
 
 @layer base {
     .wrapper {
-        @apply overflow-x-auto rounded-[10px] border-spacing-1 shadow-box;
+        @apply overflow-x-auto rounded-[10px] border-spacing-1 shadow-box h-max;
         table {
             width: 100%;
             thead > tr {
