@@ -1,96 +1,103 @@
 import { Link } from 'react-router-dom';
 import {
     FacebookIcon,
-    IconHome,
     IconMail,
-    IconShare,
+    IconPhone,
     InstagramIcon,
     TikTokIcon,
     TwitterIcon,
 } from '../../../components/icons';
-import db from '../../../data.json';
+import { useEffect, useState } from 'react';
+import { MenuService } from '../../../services';
+import FooterMenu from './FooterMenu';
 
 const Footer = () => {
-    const { menu } = db;
+    const linkStyle =
+        "relative inline-block py-1 text-textDark hover:after:content-[''] hover:after:absolute hover:after:w-full hover:after:h-[1px] hover:after:bg-textDark hover:after:left-0 hover:after:bottom-[-1px] hover:after:transition-all";
+    const h3TitleStyle =
+        "relative inline-block mb-4 font-semibold uppercase after:content-[''] after:absolute after:w-3/5 after:h-[2px] after:bg-primary after:left-0 after:-bottom-1";
+
+    const [footerMenu, setFooterMenu] = useState([]);
+    const aboutUsList = footerMenu?.filter(
+        (item) => !item?.link.startsWith('pages/chinh-sach'),
+    );
+    const policyList = footerMenu?.filter((item) =>
+        item?.link.startsWith('pages/chinh-sach'),
+    );
+
+    useEffect(() => {
+        (async () => {
+            const { menus } = await MenuService.getListMenuByType(
+                'footermenu',
+                'page',
+                0,
+                20,
+            );
+            setFooterMenu(menus);
+        })();
+    }, []);
+
     return (
-        <footer className="flex flex-col items-center justify-center text-white bg-bgDark">
-            <div className="flex items-center justify-around w-full py-10 border-b border-graySoft gap-x-14">
-                <div className="flex flex-col items-center justify-center gap-y-4">
-                    <h3 className="flex flex-col items-center mb-2 text-2xl gap-y-3">
-                        <span className="text-primary">
-                            <IconHome />
-                        </span>
-                        <span>Giờ mở cửa</span>
-                    </h3>
-                    <div className="flex flex-col gap-y-2">
-                        <span>
-                            <strong>Thứ 2-6:</strong> 8h00 am - 22h00 pm
-                        </span>
-                        <span>
-                            <strong>Thứ 7-CN:</strong> 9h00 am - 21h00 pm
-                        </span>
-                    </div>
+        <footer className="flex flex-col items-center text-white bg-bgDark">
+            <div className="flex items-start justify-around w-full py-10 border-b border-graySoft gap-x-14">
+                <FooterMenu title="Về chúng tôi" list={aboutUsList} />
+                <FooterMenu title="Chính sách" list={policyList} />
+                <div>
+                    <h3 className={h3TitleStyle}>Liên hệ</h3>
+                    <ul className="flex flex-col gap-y-3">
+                        <li className="flex items-center gap-x-4">
+                            <span className="select-none">
+                                <IconMail />
+                            </span>
+                            <span className={linkStyle}>
+                                nguyenvanthanh210704@gmail.com
+                            </span>
+                        </li>
+                        <li className="flex items-center gap-x-4">
+                            <span className="select-none">
+                                <IconPhone />
+                            </span>
+                            <span className={linkStyle}>0978684178</span>
+                        </li>
+                    </ul>
                 </div>
-                <div className="flex flex-col items-center justify-center">
-                    <h3 className="flex flex-col items-center mb-2 text-2xl gap-y-3">
-                        <span className="text-primary">
-                            <IconMail />
-                        </span>
-                        <span>Thông tin liên hệ</span>
-                    </h3>
-                    <span>
-                        Địa chỉ: Xóm 3, Quỳnh Ngọc I, Eana, Krông Ana, Đăk Lăk
-                    </span>
-                </div>
-                <div className="flex flex-col items-center justify-center">
-                    <h3 className="flex flex-col items-center mb-2 text-2xl gap-y-3">
-                        <span className="text-primary">
-                            <IconShare />
-                        </span>
-                        <span>Kết nối với chúng tôi</span>
-                    </h3>
-                    <div className="flex items-center w-full justify-evenly">
-                        <span
+                <div>
+                    <h3 className={h3TitleStyle}>Kết nối với chúng tôi</h3>
+                    <div className="flex items-center gap-x-4">
+                        <Link
+                            to={'https://facebook.com/'}
                             className="rounded-lg w-11 h-11 social-btn"
                             id="facebook"
                         >
                             <FacebookIcon />
-                        </span>
-                        <span
+                        </Link>
+                        <Link
+                            to={'https://www.instagram.com/'}
                             className="rounded-lg w-11 h-11 social-btn"
                             id="instagram"
                         >
                             <InstagramIcon />
-                        </span>
-                        <span
+                        </Link>
+                        <Link
+                            to={'https://www.tiktok.com/'}
                             className="rounded-lg w-11 h-11 social-btn"
                             id="tiktok"
                         >
                             <TikTokIcon />
-                        </span>
-                        <span
+                        </Link>
+                        <Link
+                            to={'https://x.com/'}
                             className="rounded-lg w-11 h-11 social-btn"
                             id="twitter"
                         >
                             <TwitterIcon />
-                        </span>
+                        </Link>
                     </div>
                 </div>
             </div>
-            <div className="flex items-center justify-around w-full p-3">
-                <span>Bản quyền thuộc về Cafein Team</span>
-                <ul className="flex items-center gap-x-10">
-                    {menu.map((item) => (
-                        <li key={item.id}>
-                            <Link
-                                to={item.link}
-                                className="p-2 hover:text-primary"
-                            >
-                                {item.name}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+            <div className="flex items-center justify-between w-full py-3 mx-5 px-7">
+                <p>Wynk Gear - Get the Ultimate Gaming Advantage.</p>
+                <p>Design by: Nguyễn Văn Thành - 2122110536</p>
             </div>
         </footer>
     );

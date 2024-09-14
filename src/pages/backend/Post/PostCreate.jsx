@@ -1,34 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Dropdown } from '../../../components/dropdown';
 import HeaderContent from '../../../layout/LayoutAdmin/HeaderContent';
 import { FormGroup, Input, Label, TextArea } from '../../../components/form';
 import { Button } from '../../../components/button';
 import { ImageUpload } from '../../../components/image';
-
-const topics = [
-    {
-        id: 1,
-        name: 'Tin tức mới',
-    },
-    {
-        id: 2,
-        name: 'Tin tức đặc biệt',
-    },
-];
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { PostService, TopicService } from '../../../services';
+import { useNavigate } from 'react-router-dom';
 
 const statusList = [
     {
         value: 1,
-        label: 'Xuất bản',
+        label: 'Publish',
     },
     {
         value: 2,
-        label: 'Chưa xuất bản',
+        label: 'Unpublished',
     },
 ];
 
 const PostCreate = () => {
-    const [topic_id, setTopicId] = useState(null);
+    const navigator = useNavigate();
+    const [topics, setTopics] = useState([]);
+    const [topic_id, setTopicId] = useState(0);
     const [title, setTitle] = useState('');
     const [detail, setDetail] = useState('');
     const [image, setImage] = useState('');
@@ -36,31 +31,42 @@ const PostCreate = () => {
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState(2);
 
+    useEffect(() => {
+        (async () => {
+            const res = await TopicService.getList();
+            setTopics(res.topics);
+        })();
+    }, []);
     const handleChangeImage = (e) => {
         const file = e.target.files[0];
-        setImage(URL.createObjectURL(file));
+        setImage(file);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const post = {
-            topic_id,
-            title,
-            detail,
-            image,
-            type,
-            description,
-            status,
-        };
-        console.log(post);
+        var post = new FormData();
+        post.append('topic_id', topic_id);
+        post.append('title', title);
+        post.append('detail', detail);
+        post.append('image', image);
+        post.append('type', type);
+        post.append('description', description);
+        post.append('status', status);
+        PostService.insert(post).then((result) => {
+            if (result.status === true) {
+                toast.success(result.message);
+            }
+            navigator('/admin/post', { replace: true });
+        });
     };
 
     return (
         <>
-            <HeaderContent title={'Create Post'} addBtn={false} />
+            <ToastContainer />
+            <HeaderContent title={'Create Post'} />
             <form onSubmit={handleSubmit}>
                 <div className="flex gap-x-7">
-                    <div className="grow">
+                    <div className="flex-1">
                         <FormGroup>
                             <Label htmlFor={'title'}>Title</Label>
                             <Input
@@ -75,7 +81,7 @@ const PostCreate = () => {
                             <TextArea
                                 id="detail"
                                 placeholder={'Enter your detail'}
-                                className={'h-24'}
+                                className={'h-44'}
                                 value={detail}
                                 onChange={(e) => setDetail(e.target.value)}
                             />
@@ -92,7 +98,7 @@ const PostCreate = () => {
                         <FormGroup>
                             <Label>Image</Label>
                             <ImageUpload
-                                className="h-[280px]"
+                                className="h-[250px]"
                                 onChange={handleChangeImage}
                                 image={image}
                             />
@@ -104,7 +110,7 @@ const PostCreate = () => {
                             <Dropdown>
                                 <Dropdown.Select
                                     placeholder={
-                                        topic_id
+                                        topic_id !== 0
                                             ? topics.find(
                                                   (item) =>
                                                       item.id === topic_id,

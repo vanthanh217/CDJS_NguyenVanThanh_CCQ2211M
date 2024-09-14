@@ -1,107 +1,72 @@
-import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { BreadCrumbs } from '../../components/breadcrumb';
-import { Pagination } from '../../components/pagination';
-import PostHeading from '../../components/common/post/PostHeading';
-import PostItem from '../../components/common/post/PostItem';
+import { useLocation, useParams } from 'react-router-dom';
+import { PostService } from '../../services';
+import { urlImage } from '../../config';
+import PostHeading from './common/post/PostHeading';
+import PostItem from './common/post/PostItem';
 
 const PostDetail = () => {
     const { pathname } = useLocation();
+    const { slug } = useParams();
+    const [post, setPost] = useState({});
+
+    const [relatedPosts, setRelatedPosts] = useState([]);
+    const createdAt = post?.created_at;
+    let date = new Date(createdAt);
+    let day = `0${date.getDate()}`.slice(-2);
+    let month = `0${date.getMonth() + 1}`.slice(-2);
+    let year = date.getFullYear();
+    const newCreatedAt = `${day}/${month}/${year}`;
+
+    useEffect(() => {
+        (async () => {
+            const { post, postother } = await PostService.getPostDetail(
+                slug,
+                6,
+            );
+            setPost(post);
+            setRelatedPosts(postother);
+        })();
+    }, [slug]);
+    console.log(post);
+
     return (
         <main className="container mx-auto mb-10">
             <BreadCrumbs slug={pathname} />
             <section className="mb-10 w-[80%] mx-auto">
                 <span className="inline-block mb-2 text-sm text-text2nd">
-                    Kent • 29/05/2024
+                    Kent • {newCreatedAt}
                 </span>
                 <h1 className="mb-4 text-3xl font-semibold text-textPrimary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    {post?.title}
                 </h1>
-                <p className="mb-4 text-text2nd">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea
-                    culpa quod natus voluptas ab earum est dolor sit
-                    consectetur? At ex dolore, earum nemo cupiditate quo! Ea
-                    itaque repudiandae ratione necessitatibus odio a adipisci
-                    animi beatae suscipit unde dolores voluptatibus quo
-                    laboriosam consequatur iure consequuntur, debitis facilis
-                    obcaecati sequi? Excepturi sint ratione nulla cupiditate?
-                    Numquam quis aperiam, mollitia modi commodi nam sapiente
-                    sunt nihil doloremque illum, eum incidunt voluptatem veniam
-                    saepe! Quae dolorum ullam commodi molestias itaque maiores
-                    est impedit praesentium, iure id perferendis ducimus
-                    provident amet consequatur magnam natus molestiae atque
-                    cupiditate blanditiis quos accusamus. Fugiat nobis
-                    consequuntur inventore!
-                </p>
+                <div
+                    dangerouslySetInnerHTML={{ __html: post?.detail }}
+                    className="mb-4 text-text2nd"
+                />
                 <p className="mb-4">
                     <img
-                        src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bmF0dXJlfGVufDB8fDB8fHww"
-                        alt=""
-                        className="mx-auto"
+                        src={`${urlImage}post/${post?.image}`}
+                        alt={post?.image}
+                        className="mx-auto max-h-[400px] w-3/4 object-cover"
                     />
                 </p>
-                <p className="mb-2 text-text2nd">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Totam ex laudantium dolores sit, neque soluta placeat
-                    molestiae iusto nihil, libero perferendis eius enim quos at
-                    odit illum? Sunt cumque non ducimus quae, qui unde
-                    voluptates, magni alias aut aperiam sed nam, ab nisi
-                    voluptas repudiandae dolores nihil officia vero? Assumenda
-                    voluptates a ipsum quam fugit sunt in, quaerat eos hic sint!
-                    Iusto vitae maxime harum ut, odit quas, voluptatum mollitia
-                    magnam dicta, excepturi nesciunt ipsa? Iusto deleniti odit
-                    illum repellat quo architecto, ad rem fugit quisquam
-                    repudiandae nulla optio nisi modi exercitationem laborum
-                    saepe hic voluptatum ab ipsum veniam soluta?
-                </p>
+                <p
+                    dangerouslySetInnerHTML={{ __html: post?.description }}
+                    className="mb-2 text-text2nd"
+                />
             </section>
             <section className="mb-7">
                 <PostHeading title="Related Posts" />
                 <div className="grid grid-cols-3 gap-5">
-                    <PostItem
-                        to={'abc'}
-                        url={
-                            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bmF0dXJlfGVufDB8fDB8fHww'
-                        }
-                        author={'Kent'}
-                        date={'29/05/2024'}
-                        title={
-                            'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
-                        }
-                        desc={
-                            ' Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem atque, exercitationem tempora voluptate sunt saepe expedita mollitia animi voluptatibus. Error fugiat sit nesciunt porro tenetur eveniet perferendis fuga neque rerum!'
-                        }
-                    />
-                    <PostItem
-                        to={'abc'}
-                        url={
-                            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bmF0dXJlfGVufDB8fDB8fHww'
-                        }
-                        author={'Kent'}
-                        date={'29/05/2024'}
-                        title={
-                            'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
-                        }
-                        desc={
-                            ' Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem atque, exercitationem tempora voluptate sunt saepe expedita mollitia animi voluptatibus. Error fugiat sit nesciunt porro tenetur eveniet perferendis fuga neque rerum!'
-                        }
-                    />
-                    <PostItem
-                        to={'abc'}
-                        url={
-                            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bmF0dXJlfGVufDB8fDB8fHww'
-                        }
-                        author={'Kent'}
-                        date={'29/05/2024'}
-                        title={
-                            'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
-                        }
-                        desc={
-                            ' Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem atque, exercitationem tempora voluptate sunt saepe expedita mollitia animi voluptatibus. Error fugiat sit nesciunt porro tenetur eveniet perferendis fuga neque rerum!'
-                        }
-                    />
+                    {relatedPosts &&
+                        relatedPosts.length > 0 &&
+                        relatedPosts.map((item, index) => (
+                            <PostItem key={index} item={item} />
+                        ))}
                 </div>
             </section>
-            <Pagination />
         </main>
     );
 };

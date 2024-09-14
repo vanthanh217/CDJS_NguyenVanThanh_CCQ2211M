@@ -4,22 +4,18 @@ import HeaderContent from '../../../layout/LayoutAdmin/HeaderContent';
 import { FormGroup, Input, Label } from '../../../components/form';
 import { Button } from '../../../components/button';
 import { ImageUpload } from '../../../components/image';
-
-const sortOrder = [
-    {
-        value: 1,
-        label: 'Default',
-    },
-];
+import BannerService from '../../../services/BannerService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const statusList = [
     {
         value: 1,
-        label: 'Xuất bản',
+        label: 'Publish',
     },
     {
         value: 2,
-        label: 'Chưa xuất bản',
+        label: 'Unpublished',
     },
 ];
 
@@ -28,35 +24,37 @@ const BannerCreate = () => {
     const [image, setImage] = useState('');
     const [link, setLink] = useState('');
     const [description, setDescription] = useState('');
-    const [sort_order, setSortOrder] = useState(1);
     const [position, setPosition] = useState('');
     const [status, setStatus] = useState(2);
 
     const handleChangeImage = (e) => {
         const file = e.target.files[0];
-        setImage(URL.createObjectURL(file));
+        setImage(file);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const banner = {
-            name,
-            image,
-            link,
-            description,
-            sort_order,
-            position,
-            status,
-        };
-        console.log(banner);
+        var banner = new FormData();
+        banner.append('name', name);
+        banner.append('image', image);
+        banner.append('link', link);
+        banner.append('description', description);
+        banner.append('position', position);
+        banner.append('status', status);
+        (async () => {
+            const result = await BannerService.insert(banner);
+            if (result.status === true) toast.success(result.message);
+            else toast.error(result.message);
+        })();
     };
 
     return (
         <>
-            <HeaderContent title={'Create banner'} addBtn={false} />
+            <ToastContainer />
+            <HeaderContent title={'Create banner'} />
             <form onSubmit={handleSubmit}>
                 <div className="flex gap-x-7">
-                    <div className="grow">
+                    <div className="flex-1">
                         <FormGroup>
                             <Label htmlFor={'name'}>Name</Label>
                             <Input
@@ -94,33 +92,6 @@ const BannerCreate = () => {
                         </FormGroup>
                     </div>
                     <div className="w-[450px]">
-                        <FormGroup>
-                            <Label>Sort</Label>
-                            <Dropdown>
-                                <Dropdown.Select
-                                    placeholder={
-                                        sort_order
-                                            ? sortOrder.find(
-                                                  (item) =>
-                                                      item.value === sort_order,
-                                              ).label
-                                            : 'Select the sort order'
-                                    }
-                                />
-                                <Dropdown.List>
-                                    {sortOrder.map((item) => (
-                                        <Dropdown.Option
-                                            key={item.value}
-                                            onClick={() =>
-                                                setSortOrder(item.value)
-                                            }
-                                        >
-                                            {item.label}
-                                        </Dropdown.Option>
-                                    ))}
-                                </Dropdown.List>
-                            </Dropdown>
-                        </FormGroup>
                         <FormGroup>
                             <Label>Position</Label>
                             <Dropdown>

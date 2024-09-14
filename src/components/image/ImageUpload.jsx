@@ -7,8 +7,10 @@ const ImageUpload = (props) => {
     const {
         className = '',
         onChange = () => {},
-        image = '',
+        image,
+        currentImage = '',
         product = false,
+        id = '',
     } = props;
     const inputRef = useRef(null);
 
@@ -24,11 +26,20 @@ const ImageUpload = (props) => {
             )}
             onClick={handleClickImage}
         >
-            {!image && <img src={defaultImage} alt="" className="max-w-32" />}
-            {image && (
+            {!image && (
+                <img
+                    src={defaultImage}
+                    alt=""
+                    className={classNames(
+                        'max-w-32',
+                        currentImage !== '' ? 'hidden' : '',
+                    )}
+                />
+            )}
+            {(image || currentImage) && (
                 <>
                     <img
-                        src={image}
+                        src={currentImage || URL.createObjectURL(image)}
                         alt=""
                         className={classNames(
                             'w-full h-full',
@@ -39,7 +50,8 @@ const ImageUpload = (props) => {
             )}
             <input
                 type="file"
-                name="file"
+                name={id}
+                id={id}
                 className="hidden"
                 ref={inputRef}
                 onChange={onChange}
@@ -51,8 +63,10 @@ const ImageUpload = (props) => {
 ImageUpload.propTypes = {
     className: PropTypes.string,
     onChange: PropTypes.func,
-    image: PropTypes.string,
+    image: PropTypes.any,
     product: PropTypes.bool,
+    id: PropTypes.string,
+    currentImage: PropTypes.string,
 };
 
 export default ImageUpload;

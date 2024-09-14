@@ -4,21 +4,26 @@ import HeaderContent from '../../../layout/LayoutAdmin/HeaderContent';
 import { FormGroup, Input, Label } from '../../../components/form';
 import { Button } from '../../../components/button';
 import { ImageUpload } from '../../../components/image';
+import UserService from '../../../services/UserService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
-const roles = ['admin', 'customer'];
+const rolesList = ['admin', 'customer'];
 
 const statusList = [
     {
         value: 1,
-        label: 'Xuất bản',
+        label: 'Publish',
     },
     {
         value: 2,
-        label: 'Chưa xuất bản',
+        label: 'Unpublished',
     },
 ];
 
 const UserCreate = () => {
+    const navigator = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -26,36 +31,49 @@ const UserCreate = () => {
     const [password, setPassword] = useState('');
     const [address, setAddress] = useState('');
     const [image, setImage] = useState('');
-    const [role, setRole] = useState('customer');
+    const [roles, setRoles] = useState('customer');
     const [status, setStatus] = useState(2);
 
     const handleChangeImage = (e) => {
         const file = e.target.files[0];
-        setImage(URL.createObjectURL(file));
+        setImage(file);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const user = {
-            name,
-            email,
-            phone,
-            username,
-            password,
-            address,
-            image,
-            role,
-            status,
-        };
-        console.log(user);
+        var user = new FormData();
+        user.append('image', image);
+        user.append('name', name);
+        user.append('email', email);
+        user.append('phone', phone);
+        user.append('username', username);
+        user.append('password', password);
+        user.append('address', address);
+        user.append('roles', roles);
+        user.append('status', status);
+        (async () => {
+            const result = await UserService.insert(user);
+            if (result.status === true) toast.success(result.message);
+            navigator('/admin/user', { replace: true });
+        })();
     };
 
     return (
         <>
-            <HeaderContent title={'Create user'} addBtn={false} />
+            <ToastContainer />
+            <HeaderContent title={'Create user'} />
             <form onSubmit={handleSubmit}>
                 <div className="flex gap-x-7">
-                    <div className="grow">
+                    <div className="flex-1">
+                        <FormGroup className={'w-3/5 mx-auto'}>
+                            <Label htmlFor={'image'}>Image</Label>
+                            <ImageUpload
+                                className="h-[250px]"
+                                onChange={handleChangeImage}
+                                image={image}
+                                id={'image'}
+                            />
+                        </FormGroup>
                         <FormGroup>
                             <Label htmlFor={'name'}>Name</Label>
                             <Input
@@ -92,16 +110,8 @@ const UserCreate = () => {
                                 onChange={(e) => setAddress(e.target.value)}
                             />
                         </FormGroup>
-                        <FormGroup>
-                            <Label>Image</Label>
-                            <ImageUpload
-                                className="h-[250px]"
-                                onChange={handleChangeImage}
-                                image={image}
-                            />
-                        </FormGroup>
                     </div>
-                    <div className="w-[450px]">
+                    <div className="w-[500px]">
                         <FormGroup>
                             <Label htmlFor={'username'}>Username</Label>
                             <Input
@@ -125,18 +135,18 @@ const UserCreate = () => {
                             <Dropdown>
                                 <Dropdown.Select
                                     placeholder={
-                                        role
-                                            ? roles.find(
-                                                  (item) => item === role,
+                                        roles
+                                            ? rolesList.find(
+                                                  (item) => item === roles,
                                               )
                                             : `Select the user's role`
                                     }
                                 />
                                 <Dropdown.List>
-                                    {roles.map((item, index) => (
+                                    {rolesList.map((item, index) => (
                                         <Dropdown.Option
                                             key={index}
-                                            onClick={() => setRole(item)}
+                                            onClick={() => setRoles(item)}
                                         >
                                             {item}
                                         </Dropdown.Option>

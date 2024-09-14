@@ -1,0 +1,13 @@
+.post-wrapper {
+    .swiper {
+        &-pagination-bullet {
+            width: 100px;
+            border-radius: 8px;
+            height: 5px;
+            background: #ccc;
+            &-active {
+                background-color: #efefef;
+            }
+        }
+    }
+}

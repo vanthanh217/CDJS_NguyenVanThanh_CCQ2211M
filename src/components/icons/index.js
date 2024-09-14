@@ -1,7 +1,7 @@
 export { default as IconCart } from './IconCart';
 export { default as IconHome } from './IconHome';
 export { default as IconMail } from './IconMail';
-export { default as IconShare } from './IconShare';
+export { default as IconPhone } from './IconPhone';
 export { default as IconHeart } from './IconHeart';
 export { default as IconCategory } from './IconCategory';
 export { default as IconUser } from './IconUser';
@@ -20,6 +20,13 @@ export { default as IconBanner } from './IconBanner';
 export { default as IconTopic } from './IconTopic';
 export { default as IconTrash } from './IconTrash';
 export { default as IconEdit } from './IconEdit';
+export { default as IconEye } from './IconEye';
+export { default as IconEyeOff } from './IconEyeOff';
+export { default as IconXMark } from './IconXMark';
+export { default as IconArrowLong } from './IconArrowLong';
+export { default as IconLocation } from './IconLocation';
+export { default as IconList } from './IconList';
+export { default as IconGrid } from './IconGrid';
 
 // Social icon
 export { default as FacebookIcon } from './FacebookIcon';

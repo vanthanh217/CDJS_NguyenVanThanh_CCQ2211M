@@ -13,7 +13,7 @@ const Select = ({ placeholder = '', className = '' }) => {
             )}
             onClick={toggle}
         >
-            <span className="capitalize">{placeholder}</span>
+            <span>{placeholder}</span>
             <span>
                 {show ? <IconArrow type="up" /> : <IconArrow type="down" />}
             </span>

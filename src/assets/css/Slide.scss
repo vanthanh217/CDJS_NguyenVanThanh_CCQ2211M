@@ -1,0 +1,16 @@
+.home-wrapper {
+    .swiper {
+        &-button-prev::after,
+        &-button-next::after {
+            color: #22d3ee;
+        }
+
+        &-pagination-bullet {
+            width: 16px;
+            height: 16px;
+            &.swiper-pagination-bullet-active {
+                background-color: #22d3ee;
+            }
+        }
+    }
+}

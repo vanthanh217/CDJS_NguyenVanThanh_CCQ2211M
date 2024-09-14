@@ -7,9 +7,9 @@ const LayoutAdmin = () => {
     return (
         <>
             <Header />
-            <main className="flex m-[0_20px_40px_8px] gap-x-7">
+            <main className="flex m-[0_15px_40px_8px] gap-x-6">
                 <Sidebar />
-                <section className="flex-1">
+                <section className="flex-1 min-h-[556px]">
                     <Outlet />
                 </section>
             </main>

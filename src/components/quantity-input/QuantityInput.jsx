@@ -1,24 +1,30 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from '../../utils/classNames';
 
 const QuantityInput = (props) => {
-    const [quantity, setQuantity] = useState(1);
+    const {
+        className = '',
+        size = 'L',
+        productId,
+        quantity,
+        handleDecrease,
+        handleIncrease,
+        changeValue,
+        withoutUseStore = false,
+        setQuantity,
+    } = props;
+    const btnStyle =
+        'flex items-center justify-center cursor-pointer select-none w-2/6';
 
     const handleDecrement = () => {
-        if (quantity > 1) setQuantity(quantity - 1);
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
     };
-
     const handleIncrement = () => {
         setQuantity(quantity + 1);
     };
 
-    const changeValue = (e) => {
-        setQuantity(parseInt(e.target.value));
-    };
-    const { className = '' } = props;
-    const btnStyle =
-        'flex items-center justify-center w-10 h-10 cursor-pointer select-none text-2xl';
     return (
         <div
             className={classNames(
@@ -26,16 +32,47 @@ const QuantityInput = (props) => {
                 className,
             )}
         >
-            <span className={btnStyle} onClick={handleDecrement}>
+            <span
+                className={classNames(
+                    btnStyle,
+                    size === 'L' ? 'h-10 text-2xl' : '',
+                    size === 'M' ? 'h-[30px] text-lg' : '',
+                )}
+                onClick={
+                    withoutUseStore
+                        ? handleDecrement
+                        : () => handleDecrease(productId, quantity)
+                }
+            >
                 -
             </span>
             <input
                 type="text"
                 value={quantity}
-                onChange={changeValue}
-                className="w-10 h-10 text-center bg-white"
+                onChange={
+                    withoutUseStore
+                        ? (e) => setQuantity(parseInt(e.target.value))
+                        : changeValue
+                }
+                min={1}
+                className={classNames(
+                    'text-center bg-white w-2/6',
+                    size === 'L' ? 'h-[38px]' : '',
+                    size === 'M' ? 'h-[28px] text-sm' : '',
+                )}
             />
-            <span className={btnStyle} onClick={handleIncrement}>
+            <span
+                className={classNames(
+                    btnStyle,
+                    size === 'L' ? 'h-10 text-2xl' : '',
+                    size === 'M' ? 'h-[30px] text-lg' : '',
+                )}
+                onClick={
+                    withoutUseStore
+                        ? handleIncrement
+                        : () => handleIncrease(productId, quantity)
+                }
+            >
                 +
             </span>
         </div>
@@ -44,6 +81,14 @@ const QuantityInput = (props) => {
 
 QuantityInput.propTypes = {
     className: PropTypes.string,
+    size: PropTypes.oneOf(['M', 'L']),
+    productId: PropTypes.number,
+    quantity: PropTypes.number,
+    handleDecrease: PropTypes.func,
+    handleIncrease: PropTypes.func,
+    changeValue: PropTypes.func,
+    withoutUseStore: PropTypes.bool,
+    setQuantity: PropTypes.func,
 };
 
 export default QuantityInput;

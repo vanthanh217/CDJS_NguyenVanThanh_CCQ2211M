@@ -1,0 +1,49 @@
+$bg_green: #50ac5d;
+$bg_red: #d7062a;
+
+.toggleSwitch {
+    position: relative;
+    width: 68px;
+    height: 34px;
+    user-select: none;
+    border: 1px solid #d6d6d6;
+    border-radius: 100rem;
+    cursor: pointer;
+    transition: all 0.3s linear;
+
+    .spinner {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        background-color: $bg_red;
+        border-radius: 100rem;
+        top: 4px;
+        left: 4px;
+        transition: all 0.3s linear;
+
+        &.active {
+            transform: translateX(140%);
+            background-color: $bg_green;
+        }
+
+        .toggleOn,
+        .toggleOff {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            transform: translateY(-50%) translateX(-50%);
+            transition: all 0.3s linear;
+            z-index: 2;
+
+            .path {
+                fill: none;
+                stroke: #fefefe;
+                stroke-width: 7px;
+                stroke-linecap: round;
+                stroke-miterlimit: 10;
+            }
+        }
+    }
+}

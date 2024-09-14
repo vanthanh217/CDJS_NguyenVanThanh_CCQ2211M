@@ -11,7 +11,7 @@ const Option = (props) => {
     };
     return (
         <div
-            className="flex items-center justify-center px-4 py-3 text-sm capitalize transition-all cursor-pointer hover:bg-primary hover:text-white"
+            className="flex items-center justify-center px-4 py-3 text-sm transition-all cursor-pointer hover:bg-sky-400 hover:text-white"
             onClick={handleClick}
         >
             {children}

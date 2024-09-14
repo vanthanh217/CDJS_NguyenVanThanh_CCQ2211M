@@ -3,7 +3,7 @@ import { useState } from 'react';
 export default function useScroll() {
     const [active, setActive] = useState(false);
     window.addEventListener('scroll', function () {
-        if (this.window.scrollY > 150) {
+        if (this.window.scrollY > 70) {
             setActive(true);
         } else {
             setActive(false);

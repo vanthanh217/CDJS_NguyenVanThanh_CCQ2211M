@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
     body {
-        @apply font-main text-base bg-slate-50 text-textPrimary;
+        @apply text-base bg-slate-50 text-textPrimary;
+        font-family: 'Bai Jamjuree', sans-serif;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         &::-webkit-scrollbar {
@@ -15,6 +18,20 @@
         }
         &::-webkit-scrollbar-thumb {
             @apply bg-primary;
+        }
+    }
+
+    .dropdown-scroll,
+    textarea,
+    .scroll-custom {
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        &::-webkit-scrollbar-track {
+            @apply bg-gray-300;
+        }
+        &::-webkit-scrollbar-thumb {
+            @apply bg-cyan-400;
         }
     }
 
@@ -31,11 +48,23 @@
     header.sticky-top {
         position: fixed;
         top: 0;
-        z-index: 9999;
+        z-index: 999;
         width: 100%;
         filter: opacity(0.9);
         animation: stickyHeader 0.5s linear;
-        box-shadow: 0 10px 15px -3px #ff8a6c80, 0 4px 6px -4px #ff8a6c80;
+        box-shadow: 0 10px 15px -3px #337def80, 0 4px 6px -4px #337def80;
+    }
+
+    .main-category {
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 16px;
+            top: 0;
+            right: -10px;
+        }
     }
 
     @keyframes stickyHeader {
@@ -115,20 +144,52 @@
         transform: rotate(405deg);
     }
 
-    @keyframes checkAnimation {
-        0% {
-            opacity: 1;
-            transform: scale(1) rotateY(0deg);
+    // Custom radio
+    input[type='radio'] {
+        appearance: none;
+        position: relative;
+        cursor: pointer;
+        padding: 7px;
+        border: 0;
+        &::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            background-color: #eee;
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid #e4e4e4;
         }
-
-        50% {
-            opacity: 0;
-            transform: scale(0.8) rotateY(180deg);
+        &:checked::after {
+            content: '';
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: absolute;
+            background-color: #38bdf8;
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid #e4e4e4;
         }
+    }
 
-        100% {
-            opacity: 1;
-            transform: scale(1) rotateY(360deg);
+    // Checkout
+    .checkout-wrap {
+        input:not(:placeholder-shown) + label {
+            @apply top-0 text-indigo-400 font-semibold;
+        }
+    }
+
+    // Authentication
+    .authentication-wrapper {
+        input:not(:placeholder-shown) + label {
+            @apply top-0 left-4 bg-white/95;
         }
     }
 }

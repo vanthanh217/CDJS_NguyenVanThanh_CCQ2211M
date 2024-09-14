@@ -7,6 +7,7 @@ const Input = (props) => {
         placeholder = '',
         name = '',
         className = '',
+        kind = 'border-full',
         ...rest
     } = props;
     return (
@@ -14,9 +15,14 @@ const Input = (props) => {
             type={type}
             name={name}
             className={classNames(
-                'w-full p-3 placeholder:text-text2nd text-textPrimary rounded-[10px] text-sm border border-lightStrock',
+                'w-full p-3 placeholder:text-text2nd text-textPrimary text-sm',
+                kind === 'border-full'
+                    ? 'rounded-[10px] border border-lightStrock'
+                    : '',
+                kind === 'border-bottom' ? 'border-b-2 border-indigo-500' : '',
                 className,
             )}
+            autoComplete="false"
             placeholder={placeholder}
             {...rest}
         />
@@ -28,6 +34,7 @@ Input.propTypes = {
     placeholder: PropTypes.string,
     name: PropTypes.string,
     className: PropTypes.string,
+    kind: PropTypes.string,
 };
 
 export default Input;

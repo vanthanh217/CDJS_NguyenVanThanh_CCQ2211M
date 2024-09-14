@@ -1,86 +1,168 @@
-import Banner from '../pages/backend/Banner';
-import BannerCreate from '../pages/backend/Banner/BannerCreate';
-import Brand from '../pages/backend/Brand';
-import Category from '../pages/backend/Category';
-import Contact from '../pages/backend/Contact';
-import Menu from '../pages/backend/Menu';
-import MenuCreate from '../pages/backend/Menu/MenuCreate';
-import Order from '../pages/backend/Order';
-import OrderDetail from '../pages/backend/OrderDetail';
-import Post from '../pages/backend/Post';
-import PostCreate from '../pages/backend/Post/PostCreate';
-import Product from '../pages/backend/Product';
-import ProductCreate from '../pages/backend/Product/ProductCreate';
-import Topic from '../pages/backend/Topic';
-import User from '../pages/backend/User';
-import UserCreate from '../pages/backend/User/UserCreate';
+import {
+    BannerCreate,
+    BannerEdit,
+    BannerList,
+    BannerShow,
+} from '../pages/backend/Banner';
+import { BrandEdit, BrandList, BrandShow } from '../pages/backend/Brand';
+import {
+    CategoryEdit,
+    CategoryList,
+    CategoryShow,
+} from '../pages/backend/Category';
+import { ContactList, ContactShow } from '../pages/backend/Contact';
+import { MenuEdit, MenuList, MenuShow } from '../pages/backend/Menu';
+import { OrderList, OrderShow } from '../pages/backend/Order';
+import {
+    PostCreate,
+    PostEdit,
+    PostList,
+    PostShow,
+} from '../pages/backend/Post';
+import {
+    ProductCreate,
+    ProductEdit,
+    ProductList,
+    ProductShow,
+} from '../pages/backend/Product';
+import { TopicEdit, TopicList, TopicShow } from '../pages/backend/Topic';
+import {
+    UserCreate,
+    UserEdit,
+    UserList,
+    UserShow,
+} from '../pages/backend/User';
 
 // Vì sử dụng React bằng ViteJS nên phải .jsx để support cho element chứa tag <> </>
 
 const RouterAdmin = [
     {
         path: 'banner',
-        element: <Banner />,
+        element: <BannerList />,
     },
     {
         path: 'banner/create',
         element: <BannerCreate />,
     },
     {
+        path: 'banner/show/:id',
+        element: <BannerShow />,
+    },
+    {
+        path: 'banner/edit/:id',
+        element: <BannerEdit />,
+    },
+    {
         path: 'brand',
-        element: <Brand />,
+        element: <BrandList />,
+    },
+    {
+        path: 'brand/edit/:id',
+        element: <BrandEdit />,
+    },
+    {
+        path: 'brand/show/:id',
+        element: <BrandShow />,
     },
     {
         path: 'category',
-        element: <Category />,
+        element: <CategoryList />,
+    },
+    {
+        path: 'category/edit/:id',
+        element: <CategoryEdit />,
+    },
+    {
+        path: 'category/show/:id',
+        element: <CategoryShow />,
     },
     {
         path: 'contact',
-        element: <Contact />,
+        element: <ContactList />,
+    },
+    {
+        path: 'contact/show/:id',
+        element: <ContactShow />,
     },
     {
         path: 'menu',
-        element: <Menu />,
+        element: <MenuList />,
     },
     {
-        path: 'menu/create',
-        element: <MenuCreate />,
+        path: 'menu/edit/:id',
+        element: <MenuEdit />,
+    },
+    {
+        path: 'menu/show/:id',
+        element: <MenuShow />,
     },
     {
         path: 'order',
-        element: <Order />,
+        element: <OrderList />,
     },
     {
-        path: 'orderdetail',
-        element: <OrderDetail />,
+        path: 'order/show/:id',
+        element: <OrderShow />,
     },
     {
         path: 'product',
-        element: <Product />,
+        element: <ProductList />,
     },
     {
         path: 'product/create',
         element: <ProductCreate />,
     },
     {
+        path: 'product/edit/:id',
+        element: <ProductEdit />,
+    },
+    {
+        path: 'product/show/:id',
+        element: <ProductShow />,
+    },
+    {
         path: 'post',
-        element: <Post />,
+        element: <PostList />,
     },
     {
         path: 'post/create',
         element: <PostCreate />,
     },
     {
+        path: 'post/edit/:id',
+        element: <PostEdit />,
+    },
+    {
+        path: 'post/show/:id',
+        element: <PostShow />,
+    },
+    {
         path: 'topic',
-        element: <Topic />,
+        element: <TopicList />,
+    },
+    {
+        path: 'topic/edit/:id',
+        element: <TopicEdit />,
+    },
+    {
+        path: 'topic/show/:id',
+        element: <TopicShow />,
     },
     {
         path: 'user',
-        element: <User />,
+        element: <UserList />,
     },
     {
         path: 'user/create',
         element: <UserCreate />,
+    },
+    {
+        path: 'user/edit/:id',
+        element: <UserEdit />,
+    },
+    {
+        path: 'user/show/:id',
+        element: <UserShow />,
     },
 ];
 

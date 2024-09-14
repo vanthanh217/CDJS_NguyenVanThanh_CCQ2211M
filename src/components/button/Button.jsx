@@ -10,11 +10,12 @@ const Button = (props) => {
         className = '',
         onClick = () => {},
         kind = 'primary',
+        ...rest
     } = props;
     const btnStyle =
         'rounded-[10px] flex items-center justify-center gap-x-[10px]';
     const ghostBtnStyle =
-        'text-primary border-2 border-primary hover:text-white hover:bg-primary hover:border-transparent';
+        'text-primary border-2 border-primary hover:text-white hover:bg-primary hover:border-transparent transition-all ease-linear';
     if (to !== '' && typeof to === 'string') {
         return (
             <Link
@@ -23,13 +24,14 @@ const Button = (props) => {
                     'inline-block',
                     kind === 'primary' ? 'text-white bg-primary' : '',
                     kind === 'ghost' ? ghostBtnStyle : '',
-                    kind === 'normal'
-                        ? 'text-text2nd border border-lightStrock'
+                    kind === 'ghost-white'
+                        ? 'text-textDark border-2 border-textDark hover:bg-textDark hover:text-textPrimary transition-all ease-linear'
                         : '',
                     kind === 'default' ? 'text-white' : '',
                     btnStyle,
                     className,
                 )}
+                {...rest}
             >
                 {children}
             </Link>
@@ -49,6 +51,7 @@ const Button = (props) => {
                     className,
                 )}
                 onClick={onClick}
+                {...rest}
             >
                 {children}
             </button>
@@ -62,7 +65,7 @@ Button.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     onClick: PropTypes.func,
-    kind: PropTypes.oneOf(['primary', 'ghost', 'normal', 'default']),
+    kind: PropTypes.oneOf(['primary', 'ghost', 'ghost-white', 'default']),
 };
 
 export default Button;

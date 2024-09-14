@@ -2,12 +2,9 @@ export default {
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
-            fontFamily: {
-                main: ['Epilogue', 'sans-serif;'],
-            },
             colors: {
-                primary: '#FF8A6C',
-                secondary: '#F93',
+                primary: '#1FDDC6',
+                secondary: '#3CA2DE',
                 bgDark: '#1b1b27',
                 graySoft: '#B2B3BD',
                 lightGray: '#9E9DA8',
@@ -22,6 +19,7 @@ export default {
             boxShadow: {
                 box: 'rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px',
                 outer: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
+                'soft-xl': 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
             },
         },
     },

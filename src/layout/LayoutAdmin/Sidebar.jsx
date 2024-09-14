@@ -49,11 +49,6 @@ const sidebarList = [
         url: '/order',
     },
     {
-        label: 'Order detail',
-        icon: <IconOrder />,
-        url: '/orderdetail',
-    },
-    {
         label: 'User',
         icon: <IconUser />,
         url: '/user',
@@ -73,26 +68,30 @@ const sidebarList = [
 const Sidebar = () => {
     return (
         <aside className="w-[240px]">
-            <ul className="flex flex-col flex-shrink-0 p-3 overflow-hidden bg-white rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] gap-y-2">
-                {sidebarList.map((item, index) => (
-                    <li key={index}>
-                        <NavLink
-                            to={`/admin${item.url}`}
-                            className={({ isActive }) => {
-                                return (
-                                    'flex items-center px-4 py-2 gap-x-5 hover:bg-primary rounded-[10px] text-text2nd hover:text-white' +
-                                    ' ' +
-                                    (isActive ? 'bg-primary text-white' : '')
-                                );
-                            }}
-                        >
-                            <span>{item.icon}</span>
-                            <span className="flex-1 font-medium">
-                                {item.label}
-                            </span>
-                        </NavLink>
-                    </li>
-                ))}
+            <ul className="flex flex-col flex-shrink-0 p-3 overflow-hidden capitalize bg-white rounded-lg shadow-outer gap-y-2">
+                {sidebarList
+                    .sort((a, b) => (a.label > b.label ? 1 : -1))
+                    .map((item, index) => (
+                        <li key={index}>
+                            <NavLink
+                                to={`/admin${item.url}`}
+                                className={({ isActive }) => {
+                                    return (
+                                        'flex items-center px-4 py-2 gap-x-5 hover:bg-primary rounded-[10px] text-text2nd hover:text-white' +
+                                        ' ' +
+                                        (isActive
+                                            ? 'bg-primary text-white'
+                                            : '')
+                                    );
+                                }}
+                            >
+                                <span>{item.icon}</span>
+                                <span className="flex-1 font-medium">
+                                    {item.label}
+                                </span>
+                            </NavLink>
+                        </li>
+                    ))}
             </ul>
         </aside>
     );

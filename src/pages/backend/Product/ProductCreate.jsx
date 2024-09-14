@@ -1,27 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Dropdown } from '../../../components/dropdown';
 import HeaderContent from '../../../layout/LayoutAdmin/HeaderContent';
 import { FormGroup, Input, Label, TextArea } from '../../../components/form';
 import { Button } from '../../../components/button';
 import { ImageUpload } from '../../../components/image';
-import db from '../../../data.json';
-
-const brandList = db.brand;
-
-const cateList = db.category;
+import BrandService from '../../../services/BrandService';
+import CategoryService from '../../../services/CategoryService';
+import ProductService from '../../../services/ProductService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const statusList = [
     {
         value: 1,
-        label: 'Xuất bản',
+        label: 'Publish',
     },
     {
         value: 2,
-        label: 'Chưa xuất bản',
+        label: 'Unpublished',
     },
 ];
 
 const ProductCreate = () => {
+    const navigator = useNavigate();
+    const [categories, setCategories] = useState([]);
+    const [brands, setBrands] = useState([]);
     const [brand_id, setBrandId] = useState(0);
     const [category_id, setCategoryId] = useState(0);
     const [name, setName] = useState('');
@@ -35,32 +39,44 @@ const ProductCreate = () => {
 
     const handleChangeImage = (e) => {
         const file = e.target.files[0];
-        setImage(URL.createObjectURL(file));
+        setImage(file);
     };
 
+    useEffect(() => {
+        (async () => {
+            const resBrand = await BrandService.getList();
+            const resCate = await CategoryService.getList();
+            setBrands(resBrand.brands);
+            setCategories(resCate.categories);
+        })();
+    }, []);
     const handleSubmit = (e) => {
         e.preventDefault();
-        const product = {
-            brand_id,
-            category_id,
-            name,
-            price,
-            pricesale,
-            image,
-            qty,
-            detail,
-            description,
-            status,
-        };
-        console.log(product);
+        var product = new FormData();
+        product.append('brand_id', brand_id);
+        product.append('category_id', category_id);
+        product.append('name', name);
+        product.append('image', image);
+        product.append('price', price);
+        product.append('pricesale', pricesale);
+        product.append('qty', qty);
+        product.append('detail', detail);
+        product.append('description', description);
+        product.append('status', status);
+        (async () => {
+            const result = await ProductService.insert(product);
+            if (result.status === true) toast.success(result.message);
+            navigator('/admin/product', { replace: true });
+        })();
     };
 
     return (
         <>
-            <HeaderContent addBtn={false} />
+            <ToastContainer />
+            <HeaderContent title={'Create Product'} />
             <form onSubmit={handleSubmit}>
                 <div className="flex gap-x-7">
-                    <div className="grow">
+                    <div className="flex-1">
                         <FormGroup>
                             <Label htmlFor={'name'}>Name product</Label>
                             <Input
@@ -75,7 +91,7 @@ const ProductCreate = () => {
                             <TextArea
                                 id="detail"
                                 placeholder={'Enter your detail'}
-                                className={'h-24'}
+                                className={'h-36'}
                                 value={detail}
                                 onChange={(e) => setDetail(e.target.value)}
                             />
@@ -105,16 +121,16 @@ const ProductCreate = () => {
                             <Dropdown>
                                 <Dropdown.Select
                                     placeholder={
-                                        brand_id !== null
-                                            ? brandList.find(
+                                        brand_id !== 0
+                                            ? brands.find(
                                                   (item) =>
                                                       item.id === brand_id,
-                                              ).name
+                                              )?.name
                                             : 'Select brand'
                                     }
                                 />
                                 <Dropdown.List>
-                                    {brandList.map((item) => (
+                                    {brands.map((item) => (
                                         <Dropdown.Option
                                             key={item.id}
                                             onClick={() => setBrandId(item.id)}
@@ -130,16 +146,16 @@ const ProductCreate = () => {
                             <Dropdown>
                                 <Dropdown.Select
                                     placeholder={
-                                        category_id !== null
-                                            ? cateList.find(
+                                        category_id !== 0
+                                            ? categories.find(
                                                   (item) =>
                                                       item.id === category_id,
-                                              ).name
+                                              )?.name
                                             : 'Select category'
                                     }
                                 />
                                 <Dropdown.List>
-                                    {cateList.map((item) => (
+                                    {categories.map((item) => (
                                         <Dropdown.Option
                                             key={item.id}
                                             onClick={() =>
@@ -158,7 +174,9 @@ const ProductCreate = () => {
                                 id="price"
                                 placeholder={'Enter the price'}
                                 value={price}
-                                onChange={(e) => setPrice(e.target.value)}
+                                onChange={(e) =>
+                                    setPrice(parseInt(e.target.value))
+                                }
                             />
                         </FormGroup>
                         <FormGroup>
@@ -167,7 +185,9 @@ const ProductCreate = () => {
                                 id="pricesale"
                                 placeholder={'Enter the price sale'}
                                 value={pricesale}
-                                onChange={(e) => setPriceSale(e.target.value)}
+                                onChange={(e) =>
+                                    setPriceSale(parseInt(e.target.value))
+                                }
                             />
                         </FormGroup>
                         <FormGroup>
@@ -176,7 +196,9 @@ const ProductCreate = () => {
                                 id="qty"
                                 placeholder={'Enter the quantity'}
                                 value={qty}
-                                onChange={(e) => setQty(e.target.value)}
+                                onChange={(e) =>
+                                    setQty(parseInt(e.target.value))
+                                }
                             />
                         </FormGroup>
                         <FormGroup>
